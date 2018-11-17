@@ -110,11 +110,40 @@
                     <connections>
                         <outlet property="email_textfield_login" destination="ulD-4J-dxx" id="w2P-yg-687"/>
                         <outlet property="password_textfield_login" destination="4sv-eE-RmZ" id="fSw-eg-ic0"/>
+                        <segue destination="W6X-Bv-QID" kind="show" identifier="showShoppingListView" id="F3a-jY-RMY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkT-GP-yiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="-300"/>
+            <point key="canvasLocation" x="822" y="-299"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="f8Z-zk-XSL">
+            <objects>
+                <tableViewController storyboardIdentifier="ShoppingListView" id="W6X-Bv-QID" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ShoppingListView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bRf-Ip-eUO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="NlS-bS-Bii">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NlS-bS-Bii" id="hYe-fl-2Io">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="W6X-Bv-QID" id="iOs-uY-gxa"/>
+                            <outlet property="delegate" destination="W6X-Bv-QID" id="6gm-Ea-sc8"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DjM-dd-f6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864" y="61"/>
         </scene>
         <!--Register Controller-->
         <scene sceneID="Qui-fa-NcW">
@@ -176,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHF-c5-MBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840.79999999999995" y="610.34482758620697"/>
+            <point key="canvasLocation" x="822" y="612"/>
         </scene>
     </scenes>
 </document>

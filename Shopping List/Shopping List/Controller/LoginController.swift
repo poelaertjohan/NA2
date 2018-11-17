@@ -27,7 +27,9 @@ class LoginController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
                 print("User logged in!")
-                //self.performSegue(withIdentifier: "HomeScreen", sender: self)
+                self.performSegue(withIdentifier: "showShoppingListView", sender: self)
+
+
             } else {
                 print("Error logging in!")
             }

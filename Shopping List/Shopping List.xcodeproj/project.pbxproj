@@ -18,6 +18,7 @@
 		1B62C22721A02B5000425DD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B62C22621A02B5000425DD5 /* GoogleService-Info.plist */; };
 		1B62C22921A02F7000425DD5 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C22821A02F7000425DD5 /* RegisterController.swift */; };
 		1B62C22C21A030ED00425DD5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C22B21A030ED00425DD5 /* LoginController.swift */; };
+		1B62C23421A0A13300425DD5 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C23321A0A13300425DD5 /* ShoppingListViewController.swift */; };
 		87B4514CE379FEA6C2A85877 /* Pods_Shopping_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A80FA25EE635CF1303A6A2CD /* Pods_Shopping_List.framework */; };
 		93FE30A9660803EA08B1CF15 /* Pods_Shopping_ListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74847CE27BB01AD6F339E1B6 /* Pods_Shopping_ListTests.framework */; };
 		E2FB9545D453E023EC128B80 /* Pods_Shopping_ListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9919FD8ECD1E9C655DA2E1 /* Pods_Shopping_ListUITests.framework */; };
@@ -59,6 +60,7 @@
 		1B62C22621A02B5000425DD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1B62C22821A02F7000425DD5 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		1B62C22B21A030ED00425DD5 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1B62C23321A0A13300425DD5 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		2CA41EEEEA4A9DB9D1E7DBA5 /* Pods-Shopping ListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopping ListTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shopping ListTests/Pods-Shopping ListTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74847CE27BB01AD6F339E1B6 /* Pods_Shopping_ListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_ListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D05BAE81ACEEB2D275FF50B /* Pods-Shopping ListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopping ListTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shopping ListTests/Pods-Shopping ListTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				1B62C1F721A025E900425DD5 /* ViewController.swift */,
 				1B62C22821A02F7000425DD5 /* RegisterController.swift */,
 				1B62C22B21A030ED00425DD5 /* LoginController.swift */,
+				1B62C23321A0A13300425DD5 /* ShoppingListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			files = (
 				1B62C22921A02F7000425DD5 /* RegisterController.swift in Sources */,
 				1B62C1F821A025E900425DD5 /* ViewController.swift in Sources */,
+				1B62C23421A0A13300425DD5 /* ShoppingListViewController.swift in Sources */,
 				1B62C1F621A025E900425DD5 /* AppDelegate.swift in Sources */,
 				1B62C1FE21A025E900425DD5 /* Shopping_List.xcdatamodeld in Sources */,
 				1B62C22C21A030ED00425DD5 /* LoginController.swift in Sources */,
