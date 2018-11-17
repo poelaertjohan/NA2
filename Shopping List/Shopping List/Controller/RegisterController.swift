@@ -16,12 +16,6 @@ class RegisterController: UIViewController {
     @IBOutlet weak var register_button_register: UIButton!
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    
     @IBAction func registerClicked(_ sender: Any) {
         register()
     }

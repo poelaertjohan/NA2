@@ -13,10 +13,6 @@ class LoginController: UIViewController {
     @IBOutlet weak var email_textfield_login: UITextField!
     @IBOutlet weak var password_textfield_login: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
     
     @IBAction func logInClicked(_ sender: Any) {
         logIn()
