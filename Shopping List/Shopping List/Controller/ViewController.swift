@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingListViewController: UIViewController {
+class ViewController: UIViewController {
 
 
 }

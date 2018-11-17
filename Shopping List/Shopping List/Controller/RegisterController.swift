@@ -30,6 +30,8 @@ class RegisterController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
             if error == nil && user != nil {
                 print("User created!")
+                self.performSegue(withIdentifier: "showShoppingListView", sender: self)
+
             } else {
                 print("Error creating user!")
             }

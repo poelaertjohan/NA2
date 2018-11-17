@@ -6,4 +6,9 @@
 //  Copyright © 2018 johan poelaert. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class ShoppingListViewController: UITableViewController {
+    
+    
+}

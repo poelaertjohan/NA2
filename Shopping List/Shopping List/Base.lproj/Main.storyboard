@@ -110,7 +110,7 @@
                     <connections>
                         <outlet property="email_textfield_login" destination="ulD-4J-dxx" id="w2P-yg-687"/>
                         <outlet property="password_textfield_login" destination="4sv-eE-RmZ" id="fSw-eg-ic0"/>
-                        <segue destination="W6X-Bv-QID" kind="show" identifier="showShoppingListView" id="F3a-jY-RMY"/>
+                        <segue destination="W6X-Bv-QID" kind="presentation" identifier="showShoppingListView" id="VA2-f6-Gao"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkT-GP-yiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -201,6 +201,7 @@
                         <outlet property="password_textfield_register" destination="HHR-xn-VIJ" id="5Ur-X0-kpk"/>
                         <outlet property="register_button_register" destination="j2B-lL-duG" id="A47-tm-dja"/>
                         <outlet property="username_textfield_register" destination="qwx-y6-7ac" id="ZSr-Pb-6Tk"/>
+                        <segue destination="W6X-Bv-QID" kind="presentation" identifier="showShoppingListView" id="MzQ-Wd-PKT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHF-c5-MBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,4 +209,7 @@
             <point key="canvasLocation" x="822" y="612"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="MzQ-Wd-PKT"/>
+    </inferredMetricsTieBreakers>
 </document>
