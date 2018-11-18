@@ -52,7 +52,13 @@ class ShoppingListViewController: UITableViewController {
                     var items = document.get("items") as! [[String:Any]]
                     //var test = items[0][Item]
                     print("na loooooop")
-                    var test = items[0]
+                    var test = items[0].keys //0 is the first value, keys shows the name of the value
+                    
+                    for val in test {
+                        print(val)
+                    }
+                    
+                    print(test)
                     print(test)
                     
                     /*
