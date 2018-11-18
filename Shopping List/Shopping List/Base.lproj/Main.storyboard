@@ -110,40 +110,40 @@
                     <connections>
                         <outlet property="email_textfield_login" destination="ulD-4J-dxx" id="w2P-yg-687"/>
                         <outlet property="password_textfield_login" destination="4sv-eE-RmZ" id="fSw-eg-ic0"/>
-                        <segue destination="W6X-Bv-QID" kind="presentation" identifier="showShoppingListView" id="VA2-f6-Gao"/>
+                        <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="g1i-QA-k91"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkT-GP-yiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="822" y="-299"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="f8Z-zk-XSL">
+        <!--Shopping List View Controller-->
+        <scene sceneID="gH2-df-BRb">
             <objects>
-                <tableViewController storyboardIdentifier="ShoppingListView" id="W6X-Bv-QID" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ShoppingListView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bRf-Ip-eUO">
+                <tableViewController id="wEb-k4-EbG" customClass="ShoppingListViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hdf-bS-gjM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="NlS-bS-Bii">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="PqZ-gm-vcs">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NlS-bS-Bii" id="hYe-fl-2Io">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PqZ-gm-vcs" id="iAY-Sp-gYB">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="W6X-Bv-QID" id="iOs-uY-gxa"/>
-                            <outlet property="delegate" destination="W6X-Bv-QID" id="6gm-Ea-sc8"/>
+                            <outlet property="dataSource" destination="wEb-k4-EbG" id="sRX-H3-Cg6"/>
+                            <outlet property="delegate" destination="wEb-k4-EbG" id="9NL-wQ-r9K"/>
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DjM-dd-f6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y8h-bP-9VK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1864" y="61"/>
+            <point key="canvasLocation" x="1587" y="27"/>
         </scene>
         <!--Register Controller-->
         <scene sceneID="Qui-fa-NcW">
@@ -201,15 +201,15 @@
                         <outlet property="password_textfield_register" destination="HHR-xn-VIJ" id="5Ur-X0-kpk"/>
                         <outlet property="register_button_register" destination="j2B-lL-duG" id="A47-tm-dja"/>
                         <outlet property="username_textfield_register" destination="qwx-y6-7ac" id="ZSr-Pb-6Tk"/>
-                        <segue destination="W6X-Bv-QID" kind="presentation" identifier="showShoppingListView" id="MzQ-Wd-PKT"/>
+                        <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="F0M-x7-6U9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHF-c5-MBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="612"/>
+            <point key="canvasLocation" x="822" y="382"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MzQ-Wd-PKT"/>
+        <segue reference="F0M-x7-6U9"/>
     </inferredMetricsTieBreakers>
 </document>

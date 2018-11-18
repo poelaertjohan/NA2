@@ -21,7 +21,7 @@ class RegisterController: UIViewController {
     }
     
     
-    @objc func register() {
+    func register() {
         
         //The ! after String is needed because .text returns a String?
         let email: String! = self.username_textfield_register.text
