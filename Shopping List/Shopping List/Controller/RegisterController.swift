@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
+
 
 class RegisterController: UIViewController {
     
@@ -30,10 +32,30 @@ class RegisterController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
             if error == nil && user != nil {
                 print("User created!")
+                self.addUserToDatabase()
                 self.performSegue(withIdentifier: "showShoppingListView", sender: self)
 
             } else {
                 print("Error creating user!")
+            }
+        }
+    }
+    
+    
+    func addUserToDatabase() {
+        
+        let db = Firestore.firestore()
+        let userID = Auth.auth().currentUser!.uid
+        let items = [Item]()
+
+        // Add a new document in collection "cities"
+        db.collection("users").document(userID).setData([
+            "items": items
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
             }
         }
     }
