@@ -22,19 +22,29 @@ class ShoppingListViewController: UITableViewController {
     }
     
     
-
+    
+    @IBAction func logoutPressed(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            self.performSegue(withIdentifier: "logoutAndShowHome", sender: self)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
     
     func loadData() {
-        let userID = Auth.auth().currentUser!.uid
+        let userID = Auth.auth().currentUser!.uid //WluCBFSyFRQNbsc0rOeoNln4XnX2
         let db = Firestore.firestore()
-        let userRef = db.collection("users").document("WluCBFSyFRQNbsc0rOeoNln4XnX2")
+        let userRef = db.collection("users").document(userID)
         let reference = Firestore.firestore().collection("users")
         
         
         
         
         
-        
+        /*
          userRef.getDocument { (document, error) in
             var t = document?.data()!["items"]!
             print("documentje")
@@ -54,7 +64,7 @@ class ShoppingListViewController: UITableViewController {
          print("Document does not exist")
          }
          }
-        
+        */
         
         
         
