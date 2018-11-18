@@ -61,6 +61,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Vsf-7n-9tT"/>
+                    <connections>
+                        <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="dY3-e0-otp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -210,6 +213,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F0M-x7-6U9"/>
+        <segue reference="dY3-e0-otp"/>
     </inferredMetricsTieBreakers>
 </document>

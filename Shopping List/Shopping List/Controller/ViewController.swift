@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 class ViewController: UIViewController {
 
-
+    override func viewDidLoad() {
+        
+        if Auth.auth().currentUser != nil {
+            self.performSegue(withIdentifier: "showShoppingListView", sender: self)
+        }
+    }
+    
+    
 }
 

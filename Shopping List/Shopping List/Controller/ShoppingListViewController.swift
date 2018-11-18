@@ -27,24 +27,71 @@ class ShoppingListViewController: UITableViewController {
     func loadData() {
         let userID = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
-        let userRef = db.collection("users").document(userID)
-        print(userID)
+        let userRef = db.collection("users").document("WluCBFSyFRQNbsc0rOeoNln4XnX2")
+        let reference = Firestore.firestore().collection("users")
         
-
+        
+        
+        
+        
         
          userRef.getDocument { (document, error) in
-            if let user = document.flatMap({
-                $0.data().flatMap({ data in
-                    print(data)
-                    //var t: User = User(items: data)
-                })
-            }) {
-                print("User: \(user)")
+            var t = document?.data()!["items"]!
+            print("documentje")
+            print(t)
+         if let user = document.flatMap({
+         $0.data().flatMap({ (data) in
+         
+            print("voor cast")
+            print(data["items"]!)
+         
+            let testje: User = User(items: data["items"] as! [Item])
+            print("testje")
+         })
+         }) {
+         print("User: \(user)")
+         } else {
+         print("Document does not exist")
+         }
+         }
+        
+        
+        
+        
+        
+        
+        /*
+        db.collection("users").getDocuments{ (snapshot, err) in
+            if let err = err {
+                print("error")
             } else {
-                print("Document does not exist")
+                for document in snapshot!.documents {
+                    if userID == document.documentID {
+                        print("in for loop")
+                        //print(document.get("items"))
+                        var testje: Any = document.get("items")
+                        print("testje")
+                    }
+                }
             }
         }
+        */
+        
+        
+        
+        
+        
+        /*
+         //get all users
+        reference.addSnapshotListener { (snapshot, _) in
+            guard let snapshot = snapshot else { return }
+            for document in snapshot.documents {
+                print(document.data())
+            }
+        }
+ */
  
+        
         
         /*
          //Get every user
