@@ -42,6 +42,30 @@ class ShoppingListViewController: UITableViewController {
         
         
         
+        db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
+            if error != nil {
+                print(error)
+            } else {
+                for document in (snapshot?.documents)! {
+                    print("voor looooooop")
+
+                    var items = document.get("items") as! [[String:Any]]
+                    //var test = items[0][Item]
+                    print("na loooooop")
+                    var test = items[0]
+                    print(test)
+                    
+                    /*
+                    if let array = document.data()["items"]{
+                            print("in looooooooop")
+                            print(array)
+                        }
+ */
+                    }
+                }
+            }
+ 
+ 
         
         
         /*
@@ -120,9 +144,9 @@ class ShoppingListViewController: UITableViewController {
 
         
         
-        
+    
 
         
         
-    }
+ }
 }
