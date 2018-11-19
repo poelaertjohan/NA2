@@ -16,9 +16,15 @@ import FirebaseFirestore
 
 class ShoppingListViewController: UITableViewController {
     
+    @IBOutlet var shoppingListTableView: UITableView!
+    var itemArray = [Item]()
+    
     
     override func viewDidLoad() {
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        super.viewDidLoad()
         loadData()
+        
     }
     
     
@@ -34,10 +40,46 @@ class ShoppingListViewController: UITableViewController {
     }
     
     
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return itemArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return itemArray.count
+        } else {
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "cell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
+        }
+        let item = itemArray[indexPath.row]
+        
+        cell.nameLabel.text = item.name
+        
+        return cell
+    }
+    
+    
     func loadData() {
+        
+        itemArray.append(Item(name: "appel", amount: 3, picture: "link", isChecked: false))
+        itemArray.append(Item(name: "peer", amount: 3, picture: "link", isChecked: false))
+        itemArray.append(Item(name: "kiwi", amount: 3, picture: "link", isChecked: false))
+        itemArray.append(Item(name: "perzik", amount: 3, picture: "link", isChecked: false))
+        itemArray.append(Item(name: "banaan", amount: 3, picture: "link", isChecked: false))
+        
+        
+        
+        /*
         let userID = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
-        var itemArray = [Item]()
+        
         
         
         db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
@@ -45,9 +87,9 @@ class ShoppingListViewController: UITableViewController {
                 print(error)
             } else {
                 for document in (snapshot?.documents)! {
-
+                    
                     let items = document.get("items") as! [[String:Any]]
-
+                    
                     
                     for val in items {
                         var amount: Int = 0
@@ -65,99 +107,16 @@ class ShoppingListViewController: UITableViewController {
                             } else if item.key == "picture" {
                                 picture = item.value as! String
                             }
-                            }
-                        
-                        itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
                         }
                         
+                        self.itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
                     }
-                
-                    }
-                }
-            }
- 
- 
-        
-        
-        /*
-         userRef.getDocument { (document, error) in
-            var t = document?.data()!["items"]!
-            print("documentje")
-            print(t)
-         if let user = document.flatMap({
-         $0.data().flatMap({ (data) in
-         
-            print("voor cast")
-            print(data["items"]!)
-         
-            let testje: User = User(items: data["items"] as! [Item])
-            print("testje")
-         })
-         }) {
-         print("User: \(user)")
-         } else {
-         print("Document does not exist")
-         }
-         }
-        */
-        
-        
-        
-        
-        
-        /*
-        db.collection("users").getDocuments{ (snapshot, err) in
-            if let err = err {
-                print("error")
-            } else {
-                for document in snapshot!.documents {
-                    if userID == document.documentID {
-                        print("in for loop")
-                        //print(document.get("items"))
-                        var testje: Any = document.get("items")
-                        print("testje")
-                    }
+                    
                 }
             }
         }
-        */
-        
-        
-        
-        
-        
-        /*
-         //get all users
-        reference.addSnapshotListener { (snapshot, _) in
-            guard let snapshot = snapshot else { return }
-            for document in snapshot.documents {
-                print(document.data())
-            }
-        }
- */
- 
-        
-        
-        /*
-         //Get every user
-        db.collection("users").document(userID) { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                }
-                print("gedaan")
-            }
-        }
-        
-        */
+    } */
+}
 
-        
-        
-    
 
-        
-        
- }
-
+}

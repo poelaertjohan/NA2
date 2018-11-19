@@ -10,5 +10,6 @@ import Foundation
 
 struct User {
     var items = [Item]()
+    var name: String
 }
  
