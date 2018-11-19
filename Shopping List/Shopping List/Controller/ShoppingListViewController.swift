@@ -59,6 +59,18 @@ class ShoppingListViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
         }
         let item = itemArray[indexPath.row]
+        let urlKey = item.picture
+        
+        
+        
+        if let url = URL(string: urlKey) {
+            do {
+                let data = try Data(contentsOf: url)
+                cell.pictureImageView.image = UIImage(data: data)
+            } catch let err {
+                print(err)
+            }
+        }
         
         cell.nameLabel.text = item.name
         
@@ -67,15 +79,6 @@ class ShoppingListViewController: UITableViewController {
     
     
     func loadData() {
-        /*
-        itemArray.append(Item(name: "appel", amount: 3, picture: "link", isChecked: false))
-        itemArray.append(Item(name: "peer", amount: 3, picture: "link", isChecked: false))
-        itemArray.append(Item(name: "kiwi", amount: 3, picture: "link", isChecked: false))
-        itemArray.append(Item(name: "perzik", amount: 3, picture: "link", isChecked: false))
-        itemArray.append(Item(name: "banaan", amount: 3, picture: "link", isChecked: false))
-        */
-        
-        
         
         let userID = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
