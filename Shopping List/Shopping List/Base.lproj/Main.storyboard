@@ -70,7 +70,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Shopping List" id="Vsf-7n-9tT"/>
                     <connections>
-                        <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="dY3-e0-otp"/>
+                        <segue destination="e2E-rd-jo0" kind="presentation" identifier="showShoppingListView" id="jw6-4V-2fS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -129,7 +129,7 @@
                     <connections>
                         <outlet property="email_textfield_login" destination="ulD-4J-dxx" id="w2P-yg-687"/>
                         <outlet property="password_textfield_login" destination="4sv-eE-RmZ" id="fSw-eg-ic0"/>
-                        <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="g1i-QA-k91"/>
+                        <segue destination="e2E-rd-jo0" kind="presentation" identifier="showShoppingListView" id="utf-wF-7oJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkT-GP-yiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -196,7 +196,7 @@
                             <outlet property="delegate" destination="wEb-k4-EbG" id="9NL-wQ-r9K"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Shopping List" id="1h0-ZX-fYz"/>
+                    <tabBarItem key="tabBarItem" title="Shopping List" springLoaded="YES" id="1h0-ZX-fYz"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
@@ -219,12 +219,12 @@
                         <color key="tintColor" red="0.0" green="0.1432906856" blue="0.2973607513" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Xoe-P2-bFY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add" id="4Hj-KW-C69"/>
+                    <tabBarItem key="tabBarItem" title="Add" springLoaded="YES" id="4Hj-KW-C69"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzz-y6-eZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3558" y="443"/>
+            <point key="canvasLocation" x="3526" y="443"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Tl3-YR-Y1B">
@@ -242,7 +242,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mtb-VM-IuK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1587" y="854"/>
+            <point key="canvasLocation" x="784" y="1164"/>
         </scene>
         <!--Register-->
         <scene sceneID="Qui-fa-NcW">
@@ -314,7 +314,7 @@
                     <connections>
                         <outlet property="password_textfield_register" destination="HHR-xn-VIJ" id="5Ur-X0-kpk"/>
                         <outlet property="username_textfield_register" destination="qwx-y6-7ac" id="ZSr-Pb-6Tk"/>
-                        <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="F0M-x7-6U9"/>
+                        <segue destination="e2E-rd-jo0" kind="presentation" identifier="showShoppingListView" id="fO8-NY-eRO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHF-c5-MBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,7 +323,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F0M-x7-6U9"/>
+        <segue reference="utf-wF-7oJ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.1432906856" blue="0.2973607513" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
