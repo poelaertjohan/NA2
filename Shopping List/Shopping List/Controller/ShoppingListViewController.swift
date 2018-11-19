@@ -16,9 +16,15 @@ import FirebaseFirestore
 
 class ShoppingListViewController: UITableViewController {
     
+    @IBOutlet var shoppingListTableView: UITableView!
+    var itemArray = [Item]()
+    
     
     override func viewDidLoad() {
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        super.viewDidLoad()
         loadData()
+        
     }
     
     
@@ -34,11 +40,49 @@ class ShoppingListViewController: UITableViewController {
     }
     
     
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return itemArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return itemArray.count
+        } else {
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "cell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
+        }
+        let item = itemArray[indexPath.row]
+        let urlKey = item.picture
+        
+        
+        
+        if let url = URL(string: urlKey) {
+            do {
+                let data = try Data(contentsOf: url)
+                cell.pictureImageView.image = UIImage(data: data)
+            } catch let err {
+                print(err)
+            }
+        }
+        
+        cell.nameLabel.text = item.name
+        cell.amountLabel.text = "Amount: " + String(item.amount)
+        
+        return cell
+    }
+    
+    
     func loadData() {
-        let userID = Auth.auth().currentUser!.uid //WluCBFSyFRQNbsc0rOeoNln4XnX2
+        
+        let userID = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
-        let userRef = db.collection("users").document(userID)
-        let reference = Firestore.firestore().collection("users")
         
         
         
@@ -47,106 +91,37 @@ class ShoppingListViewController: UITableViewController {
                 print(error)
             } else {
                 for document in (snapshot?.documents)! {
-                    print("voor looooooop")
-
-                    var items = document.get("items") as! [[String:Any]]
-                    //var test = items[0][Item]
-                    print("na loooooop")
-                    var test = items[0]
-                    print(test)
                     
-                    /*
-                    if let array = document.data()["items"]{
-                            print("in looooooooop")
-                            print(array)
+                    let items = document.get("items") as! [[String:Any]]
+                    
+                    
+                    for val in items {
+                        var amount: Int = 0
+                        var isChecked: Bool = false
+                        var name: String = ""
+                        var picture: String = ""
+                        
+                        for item in val {
+                            if item.key == "amount" {
+                                amount = item.value as! Int
+                            } else if item.key == "checked" {
+                                isChecked = item.value as! Bool
+                            } else if item.key == "name" {
+                                name = item.value as! String
+                            } else if item.key == "picture" {
+                                picture = item.value as! String
+                            }
                         }
- */
+                        
+                        self.itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
+                        self.shoppingListTableView.reloadData()
                     }
-                }
-            }
- 
- 
-        
-        
-        /*
-         userRef.getDocument { (document, error) in
-            var t = document?.data()!["items"]!
-            print("documentje")
-            print(t)
-         if let user = document.flatMap({
-         $0.data().flatMap({ (data) in
-         
-            print("voor cast")
-            print(data["items"]!)
-         
-            let testje: User = User(items: data["items"] as! [Item])
-            print("testje")
-         })
-         }) {
-         print("User: \(user)")
-         } else {
-         print("Document does not exist")
-         }
-         }
-        */
-        
-        
-        
-        
-        
-        /*
-        db.collection("users").getDocuments{ (snapshot, err) in
-            if let err = err {
-                print("error")
-            } else {
-                for document in snapshot!.documents {
-                    if userID == document.documentID {
-                        print("in for loop")
-                        //print(document.get("items"))
-                        var testje: Any = document.get("items")
-                        print("testje")
-                    }
+                    
                 }
             }
         }
-        */
-        
-        
-        
-        
-        
-        /*
-         //get all users
-        reference.addSnapshotListener { (snapshot, _) in
-            guard let snapshot = snapshot else { return }
-            for document in snapshot.documents {
-                print(document.data())
-            }
-        }
- */
- 
-        
-        
-        /*
-         //Get every user
-        db.collection("users").document(userID) { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                }
-                print("gedaan")
-            }
-        }
-        
-        */
-
-        
-        
-    
-
-        
-        
- }
+    }
 }
+
+
+

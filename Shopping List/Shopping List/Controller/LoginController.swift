@@ -18,7 +18,6 @@ class LoginController: UIViewController {
         logIn()
     }
     
-    
     @objc func logIn() {
         
         let email: String! = email_textfield_login.text
