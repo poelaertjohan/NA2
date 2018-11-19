@@ -73,6 +73,7 @@ class ShoppingListViewController: UITableViewController {
         }
         
         cell.nameLabel.text = item.name
+        cell.amountLabel.text = "Amount: " + String(item.amount)
         
         return cell
     }

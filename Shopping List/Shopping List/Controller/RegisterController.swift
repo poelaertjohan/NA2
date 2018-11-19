@@ -15,13 +15,13 @@ class RegisterController: UIViewController {
     
     @IBOutlet weak var username_textfield_register: UITextField!
     @IBOutlet weak var password_textfield_register: UITextField!
-    @IBOutlet weak var register_button_register: UIButton!
+    
+    
     
     
     @IBAction func registerClicked(_ sender: Any) {
         register()
     }
-    
     
     func register() {
         
