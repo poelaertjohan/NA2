@@ -35,11 +35,9 @@ class ShoppingListViewController: UITableViewController {
     
     
     func loadData() {
-        let userID = Auth.auth().currentUser!.uid //WluCBFSyFRQNbsc0rOeoNln4XnX2
+        let userID = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
-        let userRef = db.collection("users").document(userID)
-        let reference = Firestore.firestore().collection("users")
-        
+        var itemArray = [Item]()
         
         
         db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
@@ -47,26 +45,33 @@ class ShoppingListViewController: UITableViewController {
                 print(error)
             } else {
                 for document in (snapshot?.documents)! {
-                    print("voor looooooop")
 
-                    var items = document.get("items") as! [[String:Any]]
-                    //var test = items[0][Item]
-                    print("na loooooop")
-                    var test = items[0].keys //0 is the first value, keys shows the name of the value
+                    let items = document.get("items") as! [[String:Any]]
+
                     
-                    for val in test {
-                        print(val)
-                    }
-                    
-                    print(test)
-                    print(test)
-                    
-                    /*
-                    if let array = document.data()["items"]{
-                            print("in looooooooop")
-                            print(array)
+                    for val in items {
+                        var amount: Int = 0
+                        var isChecked: Bool = false
+                        var name: String = ""
+                        var picture: String = ""
+                        
+                        for item in val {
+                            if item.key == "amount" {
+                                amount = item.value as! Int
+                            } else if item.key == "checked" {
+                                isChecked = item.value as! Bool
+                            } else if item.key == "name" {
+                                name = item.value as! String
+                            } else if item.key == "picture" {
+                                picture = item.value as! String
+                            }
+                            }
+                        
+                        itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
                         }
- */
+                        
+                    }
+                
                     }
                 }
             }
@@ -155,4 +160,4 @@ class ShoppingListViewController: UITableViewController {
         
         
  }
-}
+
