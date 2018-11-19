@@ -67,16 +67,16 @@ class ShoppingListViewController: UITableViewController {
     
     
     func loadData() {
-        
+        /*
         itemArray.append(Item(name: "appel", amount: 3, picture: "link", isChecked: false))
         itemArray.append(Item(name: "peer", amount: 3, picture: "link", isChecked: false))
         itemArray.append(Item(name: "kiwi", amount: 3, picture: "link", isChecked: false))
         itemArray.append(Item(name: "perzik", amount: 3, picture: "link", isChecked: false))
         itemArray.append(Item(name: "banaan", amount: 3, picture: "link", isChecked: false))
+        */
         
         
         
-        /*
         let userID = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
         
@@ -110,13 +110,14 @@ class ShoppingListViewController: UITableViewController {
                         }
                         
                         self.itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
+                        self.shoppingListTableView.reloadData()
                     }
                     
                 }
             }
         }
-    } */
+    }
 }
 
 
-}
+
