@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10DE4C475216EC59A4DA5853 /* Pods_Shopping_ListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520525B1831CDF66D7749CCB /* Pods_Shopping_ListUITests.framework */; };
+		1B0D2CB521A59F2700F3D7B7 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D2CB421A59F2700F3D7B7 /* AddItemController.swift */; };
 		1B62C1F621A025E900425DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C1F521A025E900425DD5 /* AppDelegate.swift */; };
 		1B62C1F821A025E900425DD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C1F721A025E900425DD5 /* ViewController.swift */; };
 		1B62C1FB21A025E900425DD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B62C1F921A025E900425DD5 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		1808540F3DAFF15193228497 /* Pods_Shopping_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B0D2CB421A59F2700F3D7B7 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
 		1B62C1F221A025E900425DD5 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B62C1F521A025E900425DD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B62C1F721A025E900425DD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				1B62C22821A02F7000425DD5 /* RegisterController.swift */,
 				1B62C22B21A030ED00425DD5 /* LoginController.swift */,
 				1B62C23321A0A13300425DD5 /* ShoppingListViewController.swift */,
+				1B0D2CB421A59F2700F3D7B7 /* AddItemController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B0D2CB521A59F2700F3D7B7 /* AddItemController.swift in Sources */,
 				1B62C22921A02F7000425DD5 /* RegisterController.swift in Sources */,
 				1BB6234721A3047300EE1E2E /* ItemTableViewCell.swift in Sources */,
 				1B62C1F821A025E900425DD5 /* ViewController.swift in Sources */,
