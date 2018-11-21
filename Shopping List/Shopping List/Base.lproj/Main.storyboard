@@ -246,9 +246,19 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4P5-nV-fBS">
-                                <rect key="frame" x="60" y="548" width="294" height="157"/>
+                                <rect key="frame" x="60" y="506" width="294" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70r-fz-gOA">
+                                <rect key="frame" x="176" y="729" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Item">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addItemClicked:" destination="jqr-pw-CIc" eventType="touchUpInside" id="TpD-pT-pAs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.1432906856" blue="0.2973607513" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.1432906856" blue="0.2973607513" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -279,6 +289,7 @@
                     <tabBarItem key="tabBarItem" title="Add" springLoaded="YES" id="4Hj-KW-C69"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
+                        <outlet property="addItem_button_addItem" destination="70r-fz-gOA" id="sm7-qI-xbk"/>
                         <outlet property="amount_textfield_addItem" destination="0cj-WV-Udy" id="1m5-TG-DlK"/>
                         <outlet property="name_textfield_addItem" destination="9yl-6n-oar" id="5oO-fT-0pH"/>
                         <outlet property="picture_button_addItem" destination="HiU-cq-Uef" id="AfB-Ue-6do"/>

@@ -46,12 +46,12 @@ class RegisterController: UIViewController {
         
         let db = Firestore.firestore()
         let userID = Auth.auth().currentUser!.uid
-        let items = [Item]()
+        //let items = [Item]()
         let name = userID
 
         // Add a new document in collection "cities"
         db.collection("users").document(userID).setData([
-            "items": items,
+            "items": "items",
             "name": name
         ]) { err in
             if let err = err {

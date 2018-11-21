@@ -11,15 +11,15 @@ import Firebase
 
 class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var addItem_button_addItem: UIButton!
     @IBOutlet weak var name_textfield_addItem: UITextField!
     @IBOutlet weak var amount_textfield_addItem: UITextField!
     @IBOutlet weak var picture_button_addItem: UIButton!
     @IBOutlet weak var picture_imageview_addItem: UIImageView!
     let imagePicker = UIImagePickerController()
-
     
     override func viewDidLoad() {
-        
+        amount_textfield_addItem.keyboardType = .numberPad
     }
     
     
@@ -27,6 +27,21 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
         openPhotoLibrary()
         
     }
+    
+    
+    @IBAction func addItemClicked(_ sender: Any) {
+        addItem()
+    }
+    
+    func addItem() {
+        let item = Item(context: PersistenceService.context)
+        item.name = name_textfield_addItem.text
+        item.amount = Int16(amount_textfield_addItem.text!)!
+        item.isChecked = false
+        
+        PersistenceService.saveContext()
+    }
+    
     
     func openPhotoLibrary() {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
@@ -44,24 +59,9 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             picture_imageview_addItem.contentMode = .scaleAspectFit
             picture_imageview_addItem.image = pickedImage
+            
         }
         
-        
-        /*
-         
-         Swift Dictionary named “info”.
-         We have to unpack it from there with a key asking for what media information we want.
-         We just want the image, so that is what we ask for.  For reference, the available options are:
-         
-         UIImagePickerControllerMediaType
-         UIImagePickerControllerOriginalImage
-         UIImagePickerControllerEditedImage
-         UIImagePickerControllerCropRect
-         UIImagePickerControllerMediaURL
-         UIImagePickerControllerReferenceURL
-         UIImagePickerControllerMediaMetadata
-         
-         */
         dismiss(animated: true, completion: nil)
     }
     

@@ -21,9 +21,11 @@
 		1B62C22921A02F7000425DD5 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C22821A02F7000425DD5 /* RegisterController.swift */; };
 		1B62C22C21A030ED00425DD5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C22B21A030ED00425DD5 /* LoginController.swift */; };
 		1B62C23421A0A13300425DD5 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C23321A0A13300425DD5 /* ShoppingListViewController.swift */; };
-		1B62C23721A16EE800425DD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C23621A16EE800425DD5 /* Item.swift */; };
 		1B62C23921A16F2B00425DD5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C23821A16F2B00425DD5 /* User.swift */; };
 		1BB6234721A3047300EE1E2E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB6234621A3047300EE1E2E /* ItemTableViewCell.swift */; };
+		1BFCCD6A21A5F1ED00E1099E /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD6921A5F1ED00E1099E /* PersistenceService.swift */; };
+		1BFCCD7E21A5F71B00E1099E /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD7C21A5F71800E1099E /* Item+CoreDataClass.swift */; };
+		1BFCCD7F21A5F71B00E1099E /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD7D21A5F71A00E1099E /* Item+CoreDataProperties.swift */; };
 		535D0B7BF272995C219A1435 /* Pods_Shopping_ListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5991574BD83D617DA828EEA7 /* Pods_Shopping_ListTests.framework */; };
 		ED81BFE92982D22C760ED342 /* Pods_Shopping_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808540F3DAFF15193228497 /* Pods_Shopping_List.framework */; };
 /* End PBXBuildFile section */
@@ -66,9 +68,11 @@
 		1B62C22821A02F7000425DD5 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		1B62C22B21A030ED00425DD5 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1B62C23321A0A13300425DD5 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
-		1B62C23621A16EE800425DD5 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1B62C23821A16F2B00425DD5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1BB6234621A3047300EE1E2E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		1BFCCD6921A5F1ED00E1099E /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		1BFCCD7C21A5F71800E1099E /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1BFCCD7D21A5F71A00E1099E /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4AB24841F6BE852A9C65BD66 /* Pods-Shopping List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopping List.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shopping List/Pods-Shopping List.release.xcconfig"; sourceTree = "<group>"; };
 		520525B1831CDF66D7749CCB /* Pods_Shopping_ListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_ListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5991574BD83D617DA828EEA7 /* Pods_Shopping_ListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_ListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,13 +136,15 @@
 		1B62C1F421A025E900425DD5 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				1BFCCD7321A5F55E00E1099E /* Data */,
 				1B62C23521A16ED200425DD5 /* Model */,
 				1B62C22A21A02F8100425DD5 /* Controller */,
 				1B62C1F521A025E900425DD5 /* AppDelegate.swift */,
+				1BFCCD6921A5F1ED00E1099E /* PersistenceService.swift */,
+				1BB6234621A3047300EE1E2E /* ItemTableViewCell.swift */,
 				1B62C1F921A025E900425DD5 /* Main.storyboard */,
 				1B62C1FF21A025EC00425DD5 /* Assets.xcassets */,
 				1B62C20121A025EC00425DD5 /* LaunchScreen.storyboard */,
-				1BB6234621A3047300EE1E2E /* ItemTableViewCell.swift */,
 				1B62C20421A025EC00425DD5 /* Info.plist */,
 				1B62C1FC21A025E900425DD5 /* Shopping_List.xcdatamodeld */,
 				1B62C22621A02B5000425DD5 /* GoogleService-Info.plist */,
@@ -179,10 +185,18 @@
 		1B62C23521A16ED200425DD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1B62C23621A16EE800425DD5 /* Item.swift */,
 				1B62C23821A16F2B00425DD5 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1BFCCD7321A5F55E00E1099E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1BFCCD7D21A5F71A00E1099E /* Item+CoreDataProperties.swift */,
+				1BFCCD7C21A5F71800E1099E /* Item+CoreDataClass.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		B86BF9B6513E7EE206487759 /* Frameworks */ = {
@@ -458,11 +472,13 @@
 				1B0D2CB521A59F2700F3D7B7 /* AddItemController.swift in Sources */,
 				1B62C22921A02F7000425DD5 /* RegisterController.swift in Sources */,
 				1BB6234721A3047300EE1E2E /* ItemTableViewCell.swift in Sources */,
+				1BFCCD6A21A5F1ED00E1099E /* PersistenceService.swift in Sources */,
 				1B62C1F821A025E900425DD5 /* ViewController.swift in Sources */,
 				1B62C23421A0A13300425DD5 /* ShoppingListViewController.swift in Sources */,
+				1BFCCD7F21A5F71B00E1099E /* Item+CoreDataProperties.swift in Sources */,
 				1B62C1F621A025E900425DD5 /* AppDelegate.swift in Sources */,
 				1B62C23921A16F2B00425DD5 /* User.swift in Sources */,
-				1B62C23721A16EE800425DD5 /* Item.swift in Sources */,
+				1BFCCD7E21A5F71B00E1099E /* Item+CoreDataClass.swift in Sources */,
 				1B62C1FE21A025E900425DD5 /* Shopping_List.xcdatamodeld in Sources */,
 				1B62C22C21A030ED00425DD5 /* LoginController.swift in Sources */,
 			);

@@ -9,10 +9,7 @@
 
 
 import UIKit
-import Firebase
-import FirebaseAuth
-import FirebaseDatabase
-import FirebaseFirestore
+import CoreData
 
 class ShoppingListViewController: UITableViewController {
     
@@ -21,24 +18,10 @@ class ShoppingListViewController: UITableViewController {
     
     
     override func viewDidLoad() {
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
         super.viewDidLoad()
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         loadData()
-        
     }
-    
-    
-    
-    @IBAction func logoutPressed(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            self.performSegue(withIdentifier: "logoutAndShowHome", sender: self)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,10 +42,10 @@ class ShoppingListViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
         }
         let item = itemArray[indexPath.row]
-        let urlKey = item.picture
+        //let urlKey = item.picture
         
         
-        
+        /*
         if let url = URL(string: urlKey) {
             do {
                 let data = try Data(contentsOf: url)
@@ -71,6 +54,7 @@ class ShoppingListViewController: UITableViewController {
                 print(err)
             }
         }
+ */
         
         cell.nameLabel.text = item.name
         cell.amountLabel.text = "Amount: " + String(item.amount)
@@ -80,46 +64,15 @@ class ShoppingListViewController: UITableViewController {
     
     
     func loadData() {
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         
-        let userID = Auth.auth().currentUser!.uid
-        let db = Firestore.firestore()
+        do {
+           let items = try PersistenceService.context.fetch(fetchRequest)
+            self.itemArray = items
+            self.tableView.reloadData()
+        } catch {}
         
         
-        
-        db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
-            if error != nil {
-                print(error)
-            } else {
-                for document in (snapshot?.documents)! {
-                    
-                    let items = document.get("items") as! [[String:Any]]
-                    
-                    
-                    for val in items {
-                        var amount: Int = 0
-                        var isChecked: Bool = false
-                        var name: String = ""
-                        var picture: String = ""
-                        
-                        for item in val {
-                            if item.key == "amount" {
-                                amount = item.value as! Int
-                            } else if item.key == "checked" {
-                                isChecked = item.value as! Bool
-                            } else if item.key == "name" {
-                                name = item.value as! String
-                            } else if item.key == "picture" {
-                                picture = item.value as! String
-                            }
-                        }
-                        
-                        self.itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
-                        self.shoppingListTableView.reloadData()
-                    }
-                    
-                }
-            }
-        }
     }
 }
 
