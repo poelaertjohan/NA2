@@ -23,8 +23,6 @@ class ShoppingListViewController: UITableViewController {
     override func viewDidLoad() {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         super.viewDidLoad()
-        loadData()
-        
     }
     
     
@@ -54,6 +52,7 @@ class ShoppingListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let itemArray: [Item] = Repository().getItems()
         let cellIdentifier = "cell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
@@ -76,50 +75,6 @@ class ShoppingListViewController: UITableViewController {
         cell.amountLabel.text = "Amount: " + String(item.amount)
         
         return cell
-    }
-    
-    
-    func loadData() {
-        
-        let userID = Auth.auth().currentUser!.uid
-        let db = Firestore.firestore()
-        
-        
-        
-        db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
-            if error != nil {
-                print(error)
-            } else {
-                for document in (snapshot?.documents)! {
-                    
-                    let items = document.get("items") as! [[String:Any]]
-                    
-                    
-                    for val in items {
-                        var amount: Int = 0
-                        var isChecked: Bool = false
-                        var name: String = ""
-                        var picture: String = ""
-                        
-                        for item in val {
-                            if item.key == "amount" {
-                                amount = item.value as! Int
-                            } else if item.key == "checked" {
-                                isChecked = item.value as! Bool
-                            } else if item.key == "name" {
-                                name = item.value as! String
-                            } else if item.key == "picture" {
-                                picture = item.value as! String
-                            }
-                        }
-                        
-                        self.itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
-                        self.shoppingListTableView.reloadData()
-                    }
-                    
-                }
-            }
-        }
     }
 }
 

@@ -28,6 +28,10 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
         
     }
     
+    @IBAction func addItemClicked(_ sender: Any) {
+        uploadImage()
+    }
+    
     func openPhotoLibrary() {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
             print("can't open photo library")
@@ -46,22 +50,6 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
             picture_imageview_addItem.image = pickedImage
         }
         
-        
-        /*
-         
-         Swift Dictionary named “info”.
-         We have to unpack it from there with a key asking for what media information we want.
-         We just want the image, so that is what we ask for.  For reference, the available options are:
-         
-         UIImagePickerControllerMediaType
-         UIImagePickerControllerOriginalImage
-         UIImagePickerControllerEditedImage
-         UIImagePickerControllerCropRect
-         UIImagePickerControllerMediaURL
-         UIImagePickerControllerReferenceURL
-         UIImagePickerControllerMediaMetadata
-         
-         */
         dismiss(animated: true, completion: nil)
     }
     
@@ -69,6 +57,11 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion:nil)
+    }
+    
+    
+    func uploadImage() {
+        Repository().addPictureToDatabase(image: self.picture_imageview_addItem.image!)
     }
     
 }
