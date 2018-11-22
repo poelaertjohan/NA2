@@ -27,8 +27,6 @@ class LoginController: UIViewController {
             if error == nil && user != nil {
                 print("User logged in!")
                 self.performSegue(withIdentifier: "showShoppingListView", sender: self)
-
-
             } else {
                 print("Error logging in!")
             }
