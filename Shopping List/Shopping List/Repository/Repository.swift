@@ -13,15 +13,11 @@ import FirebaseDatabase
 import FirebaseFirestore
 
 class Repository {
-
+    var itemArray = [Item]()
+    let userID = Auth.auth().currentUser!.uid
+    let db = Firestore.firestore()
 
     func getItems() -> [Item] {
-        var itemArray = [Item]()
-        let userID = Auth.auth().currentUser!.uid
-        let db = Firestore.firestore()
-        
-        
-        
         db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
             if error != nil {
                 print(error)
@@ -48,7 +44,7 @@ class Repository {
                                 picture = item.value as! String
                             }
                         }
-                        itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
+                        self.itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
                     }
                     
                 }
@@ -58,7 +54,7 @@ class Repository {
     }
     
     //returns link to image
-    func addPictureToDatabase(image: UIImage) -> String {
+    func addItemToDatabase(image: UIImage, name: String, amount: Int, isChecked: Bool) -> String {
         let storage = Storage.storage()
         let storageReference = storage.reference()
         let imageName = NSUUID().uuidString
@@ -79,8 +75,10 @@ class Repository {
                             imageLink = url!.absoluteString
                             
                             
+                            let newItem = Item(name: name, amount: amount, picture: imageLink, isChecked: isChecked)
                             //add user here
-                            
+                            self.itemArray.append(newItem)
+                            self.putItemInDatabase(item: newItem)
                         }
                     }
                 }
@@ -90,5 +88,14 @@ class Repository {
     }
     
     
-    
+    func putItemInDatabase(item: Item) {
+        let itemString: String = item.name + ";" + String(item.amount) + ";" + item.picture + ";" + String(item.isChecked)
+        
+        let ref = db.collection("users").document(userID)
+        
+        ref.updateData([
+            "items": FieldValue.arrayUnion([itemString])
+            ])
+        
+    }
 }

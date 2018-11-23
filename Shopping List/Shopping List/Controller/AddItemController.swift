@@ -61,7 +61,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     
     func uploadImage() {
-        Repository().addPictureToDatabase(image: self.picture_imageview_addItem.image!)
+        Repository().addItemToDatabase(image: self.picture_imageview_addItem.image!, name: name_textfield_addItem.text!, amount: Int(amount_textfield_addItem.text!)!, isChecked: false)
     }
     
 }
