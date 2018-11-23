@@ -18,11 +18,15 @@ class ShoppingListViewController: UITableViewController {
     
     @IBOutlet var shoppingListTableView: UITableView!
     var itemArray = [Item]()
+    let repository = Repository()
     
     
     override func viewDidLoad() {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         super.viewDidLoad()
+        self.itemArray = self.repository.getItems()
+        print(itemArray)
+        print(itemArray)
     }
     
     
@@ -52,9 +56,8 @@ class ShoppingListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemArray: [Item] = Repository().getItems()
-        let cellIdentifier = "cell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemTableViewCell  else {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ItemTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
         }
         let item = itemArray[indexPath.row]

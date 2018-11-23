@@ -24,31 +24,25 @@ class Repository {
             } else {
                 for document in (snapshot?.documents)! {
                     
-                    let items = document.get("items") as! [[String:Any]]
+                    let items = document.get("items") as! [String]
                     
                     
                     for val in items {
-                        var amount: Int = 0
-                        var isChecked: Bool = false
-                        var name: String = ""
-                        var picture: String = ""
+                        let itemArr = val.components(separatedBy: ";")
+                        let name: String = itemArr[0]
+                        let amount: Int? = Int(itemArr[1])
+                        let picture: String = itemArr[2]
+                        let isChecked: Bool? = (itemArr[3] == "true")
                         
-                        for item in val {
-                            if item.key == "amount" {
-                                amount = item.value as! Int
-                            } else if item.key == "checked" {
-                                isChecked = item.value as! Bool
-                            } else if item.key == "name" {
-                                name = item.value as! String
-                            } else if item.key == "picture" {
-                                picture = item.value as! String
-                            }
-                        }
-                        self.itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
+                        let item = Item(name: name, amount: amount!, picture: picture, isChecked: isChecked!)
+                        
+                        self.itemArray.append(item)
+                        //print(self.itemArray)
                     }
-                    
                 }
             }
+            //na deze regel is itemarray leeg
+            print(self.itemArray.count)
         }
         return itemArray
     }
