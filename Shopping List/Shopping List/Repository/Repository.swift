@@ -17,6 +17,7 @@ class Repository {
     let userID = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
 
+    /*
     func getItems() -> [Item] {
         db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
             if error != nil {
@@ -41,11 +42,13 @@ class Repository {
                     }
                 }
             }
+            
             //na deze regel is itemarray leeg
-            print(self.itemArray.count)
+            
         }
         return itemArray
     }
+ */
     
     //returns link to image
     func addItemToDatabase(image: UIImage, name: String, amount: Int, isChecked: Bool) -> String {

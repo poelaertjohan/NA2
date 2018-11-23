@@ -19,12 +19,15 @@ class ShoppingListViewController: UITableViewController {
     @IBOutlet var shoppingListTableView: UITableView!
     var itemArray = [Item]()
     let repository = Repository()
-    
+    let userID = Auth.auth().currentUser!.uid
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         super.viewDidLoad()
-        self.itemArray = self.repository.getItems()
+        //self.itemArray = self.repository.getItems()
+        //self.itemArray = self.getItems()
+        self.getItems()
         print(itemArray)
         print(itemArray)
     }
@@ -78,6 +81,40 @@ class ShoppingListViewController: UITableViewController {
         cell.amountLabel.text = "Amount: " + String(item.amount)
         
         return cell
+    }
+    
+    
+    
+    func getItems() {
+        db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
+            if error != nil {
+                print(error)
+            } else {
+                for document in (snapshot?.documents)! {
+                    
+                    let items = document.get("items") as! [String]
+                    
+                    
+                    var testt = [Item]()
+                    for val in items {
+                        let itemArr = val.components(separatedBy: ";")
+                        let name: String = itemArr[0]
+                        let amount: Int? = Int(itemArr[1])
+                        let picture: String = itemArr[2]
+                        let isChecked: Bool? = (itemArr[3] == "true")
+                        
+                        let item = Item(name: name, amount: amount!, picture: picture, isChecked: isChecked!)
+                        
+                        testt.append(item)
+                        //print(self.itemArray)
+                    }
+                    self.itemArray = testt
+                    self.tableView.reloadData()
+                }
+            }
+            
+            //na deze regel is itemarray leeg
+        }
     }
 }
 
