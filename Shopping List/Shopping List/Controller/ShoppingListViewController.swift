@@ -18,13 +18,14 @@ class ShoppingListViewController: UITableViewController {
     
     @IBOutlet var shoppingListTableView: UITableView!
     var itemArray = [Item]()
-    
+    let repository = Repository()
+    let userID = Auth.auth().currentUser!.uid
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         super.viewDidLoad()
-        loadData()
-        
+        self.getItems()
     }
     
     
@@ -40,28 +41,25 @@ class ShoppingListViewController: UITableViewController {
     }
     
     
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return itemArray.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableview: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return itemArray.count
-        } else {
-            return 0
         }
+        return 0
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "cell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemTableViewCell  else {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ItemTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
         }
         let item = itemArray[indexPath.row]
         let urlKey = item.picture
-        
-        
         
         if let url = URL(string: urlKey) {
             do {
@@ -79,46 +77,49 @@ class ShoppingListViewController: UITableViewController {
     }
     
     
-    func loadData() {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
         
-        let userID = Auth.auth().currentUser!.uid
-        let db = Firestore.firestore()
+        itemArray.remove(at: indexPath.row)
         
         
-        
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    
+    
+    
+    
+    
+    func getItems() {
         db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
             if error != nil {
                 print(error)
             } else {
                 for document in (snapshot?.documents)! {
                     
-                    let items = document.get("items") as! [[String:Any]]
+                    let items = document.get("items") as! [String]
                     
                     
+                    var arrayOfItems = [Item]()
                     for val in items {
-                        var amount: Int = 0
-                        var isChecked: Bool = false
-                        var name: String = ""
-                        var picture: String = ""
+                        let itemArr = val.components(separatedBy: ";")
+                        let name: String = itemArr[0]
+                        let amount: Int? = Int(itemArr[1])
+                        let picture: String = itemArr[2]
+                        let isChecked: Bool? = (itemArr[3] == "true")
                         
-                        for item in val {
-                            if item.key == "amount" {
-                                amount = item.value as! Int
-                            } else if item.key == "checked" {
-                                isChecked = item.value as! Bool
-                            } else if item.key == "name" {
-                                name = item.value as! String
-                            } else if item.key == "picture" {
-                                picture = item.value as! String
-                            }
-                        }
+                        let item = Item(name: name, amount: amount!, picture: picture, isChecked: isChecked!)
                         
-                        self.itemArray.append(Item(name: name, amount: amount, picture: picture, isChecked: isChecked))
-                        self.shoppingListTableView.reloadData()
+                        arrayOfItems.append(item)
+                        //print(self.itemArray)
                     }
-                    
+                    self.itemArray = arrayOfItems
+                    self.tableView.reloadData()
                 }
             }
+            
+            //na deze regel is itemarray leeg
         }
     }
 }

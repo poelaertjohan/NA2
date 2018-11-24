@@ -9,7 +9,7 @@
 import Foundation
 
 struct User {
-    var items = [Item]()
+    var items = [String]()
     var name: String
 }
  
