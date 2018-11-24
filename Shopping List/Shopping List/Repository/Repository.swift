@@ -17,38 +17,6 @@ class Repository {
     let userID = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
 
-    /*
-    func getItems() -> [Item] {
-        db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
-            if error != nil {
-                print(error)
-            } else {
-                for document in (snapshot?.documents)! {
-                    
-                    let items = document.get("items") as! [String]
-                    
-                    
-                    for val in items {
-                        let itemArr = val.components(separatedBy: ";")
-                        let name: String = itemArr[0]
-                        let amount: Int? = Int(itemArr[1])
-                        let picture: String = itemArr[2]
-                        let isChecked: Bool? = (itemArr[3] == "true")
-                        
-                        let item = Item(name: name, amount: amount!, picture: picture, isChecked: isChecked!)
-                        
-                        self.itemArray.append(item)
-                        //print(self.itemArray)
-                    }
-                }
-            }
-            
-            //na deze regel is itemarray leeg
-            
-        }
-        return itemArray
-    }
- */
     
     //returns link to image
     func addItemToDatabase(image: UIImage, name: String, amount: Int, isChecked: Bool) -> String {

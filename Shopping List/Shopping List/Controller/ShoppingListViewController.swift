@@ -25,11 +25,7 @@ class ShoppingListViewController: UITableViewController {
     override func viewDidLoad() {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         super.viewDidLoad()
-        //self.itemArray = self.repository.getItems()
-        //self.itemArray = self.getItems()
         self.getItems()
-        print(itemArray)
-        print(itemArray)
     }
     
     
@@ -95,7 +91,7 @@ class ShoppingListViewController: UITableViewController {
                     let items = document.get("items") as! [String]
                     
                     
-                    var testt = [Item]()
+                    var arrayOfItems = [Item]()
                     for val in items {
                         let itemArr = val.components(separatedBy: ";")
                         let name: String = itemArr[0]
@@ -105,10 +101,10 @@ class ShoppingListViewController: UITableViewController {
                         
                         let item = Item(name: name, amount: amount!, picture: picture, isChecked: isChecked!)
                         
-                        testt.append(item)
+                        arrayOfItems.append(item)
                         //print(self.itemArray)
                     }
-                    self.itemArray = testt
+                    self.itemArray = arrayOfItems
                     self.tableView.reloadData()
                 }
             }
