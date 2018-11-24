@@ -16,10 +16,8 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var picture_button_addItem: UIButton!
     let imagePicker = UIImagePickerController()
     var selectedImage = UIImage()
-    
-    override func viewDidLoad() {
-        
-    }
+    var isImageSelected: Bool = false
+    let repository = Repository()
     
     
     @IBAction func loadPictureClicked(_ sender: Any) {
@@ -28,7 +26,11 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @IBAction func addItemClicked(_ sender: Any) {
-        uploadImage(image: self.selectedImage)
+        if isImageSelected {
+            uploadImage(image: self.selectedImage)
+        } else {
+            addItemWithoutImage()
+        }
     }
     
     func openPhotoLibrary() {
@@ -47,6 +49,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.selectedImage = pickedImage
+            isImageSelected = true
         }
  
         dismiss(animated: true, completion: nil)
@@ -56,11 +59,17 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion:nil)
+        isImageSelected = false
     }
     
     
     func uploadImage(image: UIImage) {
-        Repository().addItemToDatabase(image: image, name: name_textfield_addItem.text!, amount: Int(amount_textfield_addItem.text!)!, isChecked: false)
+        repository.addItemToDatabase(image: image, name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!)
+    }
+    
+    func addItemWithoutImage() {
+        let im: Item = Item(name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!, picture: "/", pictureName: "/")
+        repository.putItemInDatabase(item: im)
     }
     
 }

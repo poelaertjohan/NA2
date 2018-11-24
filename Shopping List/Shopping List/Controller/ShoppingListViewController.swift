@@ -61,14 +61,17 @@ class ShoppingListViewController: UITableViewController {
         let item = itemArray[indexPath.row]
         let urlKey = item.picture
         
-        if let url = URL(string: urlKey) {
-            do {
-                let data = try Data(contentsOf: url)
-                cell.pictureImageView.image = UIImage(data: data)
-            } catch let err {
-                print(err)
+        if urlKey != "/" {
+            if let url = URL(string: urlKey) {
+                do {
+                    let data = try Data(contentsOf: url)
+                    cell.pictureImageView.image = UIImage(data: data)
+                } catch let err {
+                    print(err)
+                }
             }
         }
+        
         
         cell.nameLabel.text = item.name
         cell.amountLabel.text = "Amount: " + String(item.amount)
@@ -80,6 +83,9 @@ class ShoppingListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         
+        if itemArray[indexPath.row].picture != "/" {
+            self.repository.deleteItemFromStorate(folderName: "images/", itemName: itemArray[indexPath.row].pictureName)
+        }
         
         itemArray.remove(at: indexPath.row)
         
@@ -87,6 +93,7 @@ class ShoppingListViewController: UITableViewController {
         //tableView.deleteRows(at: [indexPath], with: .automatic)
         
         self.repository.updateItemsInDatabase(itemArray: self.itemArray)
+        
     }
     
     
@@ -108,11 +115,11 @@ class ShoppingListViewController: UITableViewController {
                     for val in items {
                         let itemArr = val.components(separatedBy: ";")
                         let name: String = itemArr[0]
-                        let amount: Int? = Int(itemArr[1])
+                        let amount: String = itemArr[1]
                         let picture: String = itemArr[2]
-                        let isChecked: Bool? = (itemArr[3] == "true")
+                        let pictureName: String = itemArr[3]
                         
-                        let item = Item(name: name, amount: amount!, picture: picture, isChecked: isChecked!)
+                        let item = Item(name: name, amount: amount, picture: picture, pictureName: pictureName)
                         
                         arrayOfItems.append(item)
                         //print(self.itemArray)

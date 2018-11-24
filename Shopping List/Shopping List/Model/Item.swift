@@ -10,7 +10,7 @@ import Foundation
 
 struct Item {
     var name: String
-    var amount: Int
+    var amount: String
     var picture: String
-    var isChecked: Bool
+    var pictureName: String
 }

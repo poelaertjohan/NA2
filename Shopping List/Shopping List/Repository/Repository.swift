@@ -19,7 +19,7 @@ class Repository {
 
     
     //returns link to image
-    func addItemToDatabase(image: UIImage, name: String, amount: Int, isChecked: Bool) -> String {
+    func addItemToDatabase(image: UIImage, name: String, amount: String) -> String {
         let storage = Storage.storage()
         let storageReference = storage.reference()
         let imageName = NSUUID().uuidString
@@ -40,7 +40,7 @@ class Repository {
                             imageLink = url!.absoluteString
                             
                             
-                            let newItem = Item(name: name, amount: amount, picture: imageLink, isChecked: isChecked)
+                            let newItem = Item(name: name, amount: amount, picture: imageLink, pictureName: imageName)
                             //add user here
                             self.itemArray.append(newItem)
                             self.putItemInDatabase(item: newItem)
@@ -76,7 +76,15 @@ class Repository {
             ])
     }
     
+    func deleteItemFromStorate(folderName: String, itemName: String) {
+        Storage.storage().reference().child(folderName + itemName).delete { (error) in
+            if let error = error {
+                print("can't delete item from storage")
+            }
+        }
+    }
+    
     func convertItemToString(item: Item) -> String {
-        return item.name + ";" + String(item.amount) + ";" + item.picture + ";" + String(item.isChecked)
+        return item.name + ";" + String(item.amount) + ";" + item.picture + ";" + item.pictureName
     }
 }
