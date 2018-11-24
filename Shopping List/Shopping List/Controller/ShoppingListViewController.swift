@@ -80,10 +80,11 @@ class ShoppingListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         
+        
         itemArray.remove(at: indexPath.row)
         
-        
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.reloadData()
+        //tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     
@@ -118,8 +119,6 @@ class ShoppingListViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             }
-            
-            //na deze regel is itemarray leeg
         }
     }
 }
