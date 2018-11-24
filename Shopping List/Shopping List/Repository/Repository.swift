@@ -54,7 +54,7 @@ class Repository {
     
     
     func putItemInDatabase(item: Item) {
-        let itemString: String = item.name + ";" + String(item.amount) + ";" + item.picture + ";" + String(item.isChecked)
+        let itemString: String = convertItemToString(item: item)
         
         let ref = db.collection("users").document(userID)
         
@@ -62,5 +62,21 @@ class Repository {
             "items": FieldValue.arrayUnion([itemString])
             ])
         
+    }
+    
+    func updateItemsInDatabase(itemArray: [Item]) {
+        
+        var itemsInString = [String]()
+        for item in itemArray {
+            itemsInString.append(convertItemToString(item: item))
+        }
+        
+        db.collection("users").document(userID).updateData([
+            "items": itemsInString
+            ])
+    }
+    
+    func convertItemToString(item: Item) -> String {
+        return item.name + ";" + String(item.amount) + ";" + item.picture + ";" + String(item.isChecked)
     }
 }
