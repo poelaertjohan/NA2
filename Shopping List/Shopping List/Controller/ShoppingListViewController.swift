@@ -85,6 +85,8 @@ class ShoppingListViewController: UITableViewController {
         
         tableView.reloadData()
         //tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        self.repository.updateItemsInDatabase(itemArray: self.itemArray)
     }
     
     
