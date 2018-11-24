@@ -41,18 +41,17 @@ class ShoppingListViewController: UITableViewController {
     }
     
     
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return itemArray.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableview: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return itemArray.count
-        } else {
-            return 0
         }
+        return 0
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -61,8 +60,6 @@ class ShoppingListViewController: UITableViewController {
         }
         let item = itemArray[indexPath.row]
         let urlKey = item.picture
-        
-        
         
         if let url = URL(string: urlKey) {
             do {
@@ -78,6 +75,19 @@ class ShoppingListViewController: UITableViewController {
         
         return cell
     }
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
+        itemArray.remove(at: indexPath.row)
+        
+        
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    
+    
     
     
     
