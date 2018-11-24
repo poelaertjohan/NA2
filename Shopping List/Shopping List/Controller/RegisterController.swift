@@ -15,12 +15,15 @@ class RegisterController: UIViewController {
     
     @IBOutlet weak var username_textfield_register: UITextField!
     @IBOutlet weak var password_textfield_register: UITextField!
+    @IBOutlet weak var password2_textfield_register: UITextField!
     
     
     
     
     @IBAction func registerClicked(_ sender: Any) {
-        register()
+        if password_textfield_register.text == password2_textfield_register.text {
+            register()
+        }
     }
     
     func register() {

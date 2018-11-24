@@ -25,6 +25,8 @@
 		1B62C23921A16F2B00425DD5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C23821A16F2B00425DD5 /* User.swift */; };
 		1BB6234721A3047300EE1E2E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB6234621A3047300EE1E2E /* ItemTableViewCell.swift */; };
 		1BFCCD8921A731DC00E1099E /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD8821A731DC00E1099E /* Repository.swift */; };
+		1BFCCD8E21A9919800E1099E /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD8D21A9919800E1099E /* BorderButton.swift */; };
+		1BFCCD9121A9948E00E1099E /* FullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD9021A9948E00E1099E /* FullButton.swift */; };
 		535D0B7BF272995C219A1435 /* Pods_Shopping_ListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5991574BD83D617DA828EEA7 /* Pods_Shopping_ListTests.framework */; };
 		ED81BFE92982D22C760ED342 /* Pods_Shopping_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808540F3DAFF15193228497 /* Pods_Shopping_List.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +73,8 @@
 		1B62C23821A16F2B00425DD5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1BB6234621A3047300EE1E2E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		1BFCCD8821A731DC00E1099E /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		1BFCCD8D21A9919800E1099E /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
+		1BFCCD9021A9948E00E1099E /* FullButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullButton.swift; sourceTree = "<group>"; };
 		4AB24841F6BE852A9C65BD66 /* Pods-Shopping List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopping List.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shopping List/Pods-Shopping List.release.xcconfig"; sourceTree = "<group>"; };
 		520525B1831CDF66D7749CCB /* Pods_Shopping_ListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_ListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5991574BD83D617DA828EEA7 /* Pods_Shopping_ListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_ListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +138,7 @@
 		1B62C1F421A025E900425DD5 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				1BFCCD8F21A9947400E1099E /* Objects */,
 				1BFCCD8A21A732D400E1099E /* Repository */,
 				1B62C23521A16ED200425DD5 /* Model */,
 				1B62C22A21A02F8100425DD5 /* Controller */,
@@ -194,6 +199,15 @@
 				1BFCCD8821A731DC00E1099E /* Repository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		1BFCCD8F21A9947400E1099E /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				1BFCCD8D21A9919800E1099E /* BorderButton.swift */,
+				1BFCCD9021A9948E00E1099E /* FullButton.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		B86BF9B6513E7EE206487759 /* Frameworks */ = {
@@ -475,8 +489,10 @@
 				1B62C1F621A025E900425DD5 /* AppDelegate.swift in Sources */,
 				1B62C23921A16F2B00425DD5 /* User.swift in Sources */,
 				1B62C23721A16EE800425DD5 /* Item.swift in Sources */,
+				1BFCCD9121A9948E00E1099E /* FullButton.swift in Sources */,
 				1B62C1FE21A025E900425DD5 /* Shopping_List.xcdatamodeld in Sources */,
 				1B62C22C21A030ED00425DD5 /* LoginController.swift in Sources */,
+				1BFCCD8E21A9919800E1099E /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

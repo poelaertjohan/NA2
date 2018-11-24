@@ -14,9 +14,8 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var name_textfield_addItem: UITextField!
     @IBOutlet weak var amount_textfield_addItem: UITextField!
     @IBOutlet weak var picture_button_addItem: UIButton!
-    @IBOutlet weak var picture_imageview_addItem: UIImageView!
     let imagePicker = UIImagePickerController()
-
+    var selectedImage = UIImage()
     
     override func viewDidLoad() {
         
@@ -29,7 +28,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @IBAction func addItemClicked(_ sender: Any) {
-        uploadImage()
+        uploadImage(image: self.selectedImage)
     }
     
     func openPhotoLibrary() {
@@ -45,11 +44,11 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            picture_imageview_addItem.contentMode = .scaleAspectFit
-            picture_imageview_addItem.image = pickedImage
-        }
         
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.selectedImage = pickedImage
+        }
+ 
         dismiss(animated: true, completion: nil)
     }
     
@@ -60,8 +59,8 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     
-    func uploadImage() {
-        Repository().addItemToDatabase(image: self.picture_imageview_addItem.image!, name: name_textfield_addItem.text!, amount: Int(amount_textfield_addItem.text!)!, isChecked: false)
+    func uploadImage(image: UIImage) {
+        Repository().addItemToDatabase(image: image, name: name_textfield_addItem.text!, amount: Int(amount_textfield_addItem.text!)!, isChecked: false)
     }
     
 }
