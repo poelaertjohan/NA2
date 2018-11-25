@@ -87,4 +87,7 @@ class Repository {
     func convertItemToString(item: Item) -> String {
         return item.name + ";" + String(item.amount) + ";" + item.picture + ";" + item.pictureName
     }
+    
+    
+    
 }

@@ -97,7 +97,39 @@ class ShoppingListViewController: UITableViewController {
     }
     
     
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let selectedItem = self.itemArray[indexPath.row]
+        
+        if selectedItem.pictureName != "/" {
+        if let url = URL(string: itemArray[indexPath.row].picture) {
+            do {
+                let data = try Data(contentsOf: url)
+                showImageFullScreen(image: UIImage(data: data)!)
+            } catch let err {
+                print(err)
+            }
+        }
+        }
+    }
     
+    func showImageFullScreen(image:UIImage){
+        let fullscreenImage = UIImageView(image: image)
+        fullscreenImage.contentMode = .scaleAspectFit
+        fullscreenImage.backgroundColor = .black
+        fullscreenImage.frame = UIScreen.main.bounds
+        fullscreenImage.isUserInteractionEnabled = true
+        let tapCell = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage(_:)))
+        fullscreenImage.addGestureRecognizer(tapCell)
+        self.view.addSubview(fullscreenImage)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
     
     
     
