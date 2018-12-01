@@ -20,17 +20,39 @@ class LoginController: UIViewController {
     
     @objc func logIn() {
         
-        let email: String! = email_textfield_login.text
-        let password: String! = password_textfield_login.text
         
+        guard let email = email_textfield_login.text, !email.isEmpty else {
+            showWarning(message: "Please fill in your email address")
+            return
+        }
+        
+        guard let password = password_textfield_login.text, !password.isEmpty else {
+            showWarning(message: "Please fill in your password")
+            return
+        }
+        
+        login(email: email, password: password)
+        
+    }
+    
+    
+    func login(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
                 print("User logged in!")
                 self.performSegue(withIdentifier: "showShoppingListView", sender: self)
             } else {
-                print("Error logging in!")
+                self.showWarning(message: "Invalid email or password")
             }
         }
     }
+    
+    func showWarning(message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+
     
 }
