@@ -31,10 +31,10 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="HomeScreen" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doK-8g-WVv" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doK-8g-WVv" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="36" y="561" width="342" height="39"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -45,7 +45,7 @@
                                     <segue destination="PgR-GU-PID" kind="show" id="Hht-bc-7Wm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjg-l6-O75" customClass="BorderButton" customModule="Shopping_List" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjg-l6-O75" customClass="BorderButton" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="36" y="494" width="342" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,7 +86,7 @@
             <objects>
                 <viewController title="Log In" id="PgR-GU-PID" customClass="LoginController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bEr-1Z-To7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="username_textfield_login" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ulD-4J-dxx">
@@ -101,6 +101,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="password_textfield_login" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4sv-eE-RmZ">
                                 <rect key="frame" x="36" y="436" width="342" height="30"/>
                                 <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tS6-oU-YWe" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
@@ -345,7 +346,7 @@
             <objects>
                 <viewController title="Register" id="6hF-5K-oFG" customClass="RegisterController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kgD-Dp-n8I">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="email_textfield_register" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qwx-y6-7ac">
@@ -367,14 +368,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type password again" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1IF-JJ-aoP">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="password2_textfield_register" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re type password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nhd-Yp-N2g">
                                 <rect key="frame" x="36" y="471" width="342" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CxQ-4g-TH4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="iL9-r0-PRA"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaX-8a-0po" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="36" y="519" width="342" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaX-8a-0po" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="36" y="517" width="342" height="41"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -390,28 +395,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Fut-Fb-vEb" firstAttribute="trailing" secondItem="Nhd-Yp-N2g" secondAttribute="trailing" constant="36" id="1BY-XV-K0v"/>
                             <constraint firstItem="qwx-y6-7ac" firstAttribute="top" secondItem="Fut-Fb-vEb" secondAttribute="top" constant="254" id="1zC-4S-9Im"/>
                             <constraint firstItem="HHR-xn-VIJ" firstAttribute="leading" secondItem="Fut-Fb-vEb" secondAttribute="leading" constant="36" id="2bJ-uh-LC2"/>
-                            <constraint firstItem="Fut-Fb-vEb" firstAttribute="trailing" secondItem="1IF-JJ-aoP" secondAttribute="trailing" constant="36" id="5LK-wP-yLQ"/>
                             <constraint firstItem="Fut-Fb-vEb" firstAttribute="bottom" secondItem="QaX-8a-0po" secondAttribute="bottom" constant="304" id="Ch8-5f-IKa"/>
-                            <constraint firstItem="QaX-8a-0po" firstAttribute="top" secondItem="1IF-JJ-aoP" secondAttribute="bottom" constant="18" id="JmT-iE-bCA"/>
                             <constraint firstItem="Fut-Fb-vEb" firstAttribute="trailing" secondItem="QaX-8a-0po" secondAttribute="trailing" constant="36" id="MrA-e7-m3c"/>
                             <constraint firstItem="QaX-8a-0po" firstAttribute="leading" secondItem="Fut-Fb-vEb" secondAttribute="leading" constant="36" id="Ow9-er-cWj"/>
+                            <constraint firstItem="Nhd-Yp-N2g" firstAttribute="top" secondItem="HHR-xn-VIJ" secondAttribute="bottom" constant="8" id="PwR-jj-vEy"/>
+                            <constraint firstItem="QaX-8a-0po" firstAttribute="top" secondItem="Nhd-Yp-N2g" secondAttribute="bottom" constant="16" id="UJk-y8-h5o"/>
                             <constraint firstItem="HHR-xn-VIJ" firstAttribute="top" secondItem="qwx-y6-7ac" secondAttribute="bottom" constant="9" id="Xy6-a8-hb0"/>
                             <constraint firstItem="Fut-Fb-vEb" firstAttribute="trailing" secondItem="qwx-y6-7ac" secondAttribute="trailing" constant="36" id="chp-7F-vjx"/>
                             <constraint firstItem="Fut-Fb-vEb" firstAttribute="trailing" secondItem="HHR-xn-VIJ" secondAttribute="trailing" constant="36" id="d5C-TF-9Lk"/>
-                            <constraint firstItem="1IF-JJ-aoP" firstAttribute="top" secondItem="HHR-xn-VIJ" secondAttribute="bottom" constant="8" id="dy1-Wx-vOK"/>
-                            <constraint firstItem="QaX-8a-0po" firstAttribute="top" secondItem="1IF-JJ-aoP" secondAttribute="bottom" constant="18" id="eQZ-bd-U3K"/>
                             <constraint firstItem="qwx-y6-7ac" firstAttribute="leading" secondItem="Fut-Fb-vEb" secondAttribute="leading" constant="36" id="pQe-3e-uyc"/>
-                            <constraint firstItem="1IF-JJ-aoP" firstAttribute="leading" secondItem="Fut-Fb-vEb" secondAttribute="leading" constant="36" id="xYl-KD-yCK"/>
-                            <constraint firstItem="1IF-JJ-aoP" firstAttribute="top" secondItem="HHR-xn-VIJ" secondAttribute="bottom" constant="8" id="y7Z-Dd-Hn9"/>
+                            <constraint firstItem="Nhd-Yp-N2g" firstAttribute="leading" secondItem="Fut-Fb-vEb" secondAttribute="leading" constant="36" id="rI6-EN-fh9"/>
                             <constraint firstItem="HHR-xn-VIJ" firstAttribute="top" secondItem="qwx-y6-7ac" secondAttribute="bottom" constant="9" id="z8s-VE-19x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fut-Fb-vEb"/>
                     </view>
                     <connections>
-                        <outlet property="password2_textfield_register" destination="1IF-JJ-aoP" id="IFi-Xv-q9n"/>
-                        <outlet property="password_textfield_register" destination="1IF-JJ-aoP" id="JIO-2W-dsM"/>
+                        <outlet property="password2_textfield_register" destination="Nhd-Yp-N2g" id="Syk-nW-BsK"/>
+                        <outlet property="password_textfield_register" destination="HHR-xn-VIJ" id="HIA-NT-Trf"/>
                         <outlet property="username_textfield_register" destination="qwx-y6-7ac" id="ZSr-Pb-6Tk"/>
                         <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="QUf-I4-GEf"/>
                     </connections>
@@ -422,7 +425,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FoS-tz-zgK"/>
+        <segue reference="QUf-I4-GEf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.1432906856" blue="0.2973607513" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

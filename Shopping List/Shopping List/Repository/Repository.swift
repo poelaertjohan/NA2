@@ -14,7 +14,6 @@ import FirebaseFirestore
 
 class Repository {
     var itemArray = [Item]()
-    let userID = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
 
     
@@ -54,6 +53,8 @@ class Repository {
     
     
     func putItemInDatabase(item: Item) {
+        
+        let userID = Auth.auth().currentUser!.uid
         let itemString: String = convertItemToString(item: item)
         
         let ref = db.collection("users").document(userID)
@@ -66,6 +67,7 @@ class Repository {
     
     func updateItemsInDatabase(itemArray: [Item]) {
         
+        let userID = Auth.auth().currentUser!.uid
         var itemsInString = [String]()
         for item in itemArray {
             itemsInString.append(convertItemToString(item: item))
@@ -87,6 +89,9 @@ class Repository {
     func convertItemToString(item: Item) -> String {
         return item.name + ";" + String(item.amount) + ";" + item.picture + ";" + item.pictureName
     }
+    
+    
+
     
     
     
