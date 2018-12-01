@@ -22,10 +22,21 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     @IBAction func loadPictureClicked(_ sender: Any) {
         openPhotoLibrary()
-        
     }
     
     @IBAction func addItemClicked(_ sender: Any) {
+        
+        guard let name = name_textfield_addItem.text, !name.isEmpty else {
+            showWarning(message: "Please pick a name")
+            return
+        }
+        
+        guard let amount = name_textfield_addItem.text, !amount.isEmpty else {
+            showWarning(message: "Please insert an amount")
+            return
+        }
+        
+        
         if isImageSelected {
             uploadImage(image: self.selectedImage)
         } else {
@@ -55,6 +66,11 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
         dismiss(animated: true, completion: nil)
     }
     
+    func showWarning(message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
