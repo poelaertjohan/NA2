@@ -14,7 +14,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
 
-class ShoppingListViewController: UITableViewController {
+class ShoppingListViewController: UITableViewController, UITabBarControllerDelegate {
     
     @IBOutlet var shoppingListTableView: UITableView!
     var itemArray = [Item]()
@@ -111,6 +111,15 @@ class ShoppingListViewController: UITableViewController {
         }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        let alert = UIAlertController(title: "scherm geladen", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     
     func showImageFullScreen(image:UIImage){
         let fullscreenImage = UIImageView(image: image)

@@ -31,10 +31,10 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="HomeScreen" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doK-8g-WVv" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doK-8g-WVv" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="36" y="561" width="342" height="39"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -45,7 +45,7 @@
                                     <segue destination="PgR-GU-PID" kind="show" id="Hht-bc-7Wm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjg-l6-O75" customClass="BorderButton" customModule="Shopping_List" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjg-l6-O75" customClass="BorderButton" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="36" y="494" width="342" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -74,7 +74,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Shopping List" id="Vsf-7n-9tT"/>
                     <connections>
-                        <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="f5B-pn-UBs"/>
+                        <segue destination="N1n-Zz-Jbf" kind="presentation" identifier="showShoppingListView" id="cEn-ru-6tA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -86,7 +86,7 @@
             <objects>
                 <viewController title="Log In" id="PgR-GU-PID" customClass="LoginController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bEr-1Z-To7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="username_textfield_login" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ulD-4J-dxx">
@@ -141,7 +141,7 @@
                     <connections>
                         <outlet property="email_textfield_login" destination="ulD-4J-dxx" id="w2P-yg-687"/>
                         <outlet property="password_textfield_login" destination="4sv-eE-RmZ" id="fSw-eg-ic0"/>
-                        <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="85Q-oG-FSu"/>
+                        <segue destination="N1n-Zz-Jbf" kind="presentation" identifier="showShoppingListView" id="mxV-Ga-enh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkT-GP-yiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,11 +167,6 @@
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="0qT-E8-RQ3"/>
-                                <barButtonItem title="Add" id="MDu-fl-Jcp">
-                                    <connections>
-                                        <segue destination="RC6-v8-CsB" kind="presentation" id="IaU-KH-oxm"/>
-                                    </connections>
-                                </barButtonItem>
                             </items>
                         </toolbar>
                         <prototypes>
@@ -214,6 +209,7 @@
                             <outlet property="delegate" destination="wEb-k4-EbG" id="9NL-wQ-r9K"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="hoI-HJ-5Ln"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
@@ -223,24 +219,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8h-bP-9VK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2070" y="27"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="lrG-QC-h4F">
-            <objects>
-                <tabBarController id="RC6-v8-CsB" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wcn-gi-gJA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="jqr-pw-CIc" kind="relationship" relationship="viewControllers" id="eKJ-CV-Vcp"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Neh-zx-2VQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3157" y="103"/>
+            <point key="canvasLocation" x="3086" y="-487"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="2Tr-w3-Aia">
@@ -301,14 +280,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJz-5n-lsK">
                                 <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Back" id="VOl-WJ-8Ed">
-                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="wEb-k4-EbG" kind="show" id="FoS-tz-zgK"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
+                                <items/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -339,14 +311,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzz-y6-eZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4241" y="-370"/>
+            <point key="canvasLocation" x="3086" y="335"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="jIN-8H-tHP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rRk-OX-uOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="N1n-Zz-Jbf" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WYp-bO-kwj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="wEb-k4-EbG" kind="relationship" relationship="viewControllers" id="Qkn-25-uJY"/>
+                        <segue destination="jqr-pw-CIc" kind="relationship" relationship="viewControllers" id="EIk-dy-YfR"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="1820" y="27"/>
         </scene>
         <!--Register-->
         <scene sceneID="Qui-fa-NcW">
             <objects>
                 <viewController title="Register" id="6hF-5K-oFG" customClass="RegisterController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kgD-Dp-n8I">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="email_textfield_register" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qwx-y6-7ac">
@@ -368,7 +358,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="password2_textfield_register" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re type password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nhd-Yp-N2g">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="password2_textfield_register" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re type password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nhd-Yp-N2g">
                                 <rect key="frame" x="36" y="471" width="342" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CxQ-4g-TH4"/>
@@ -378,7 +368,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaX-8a-0po" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaX-8a-0po" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="36" y="517" width="342" height="41"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -416,7 +406,7 @@
                         <outlet property="password2_textfield_register" destination="Nhd-Yp-N2g" id="Syk-nW-BsK"/>
                         <outlet property="password_textfield_register" destination="HHR-xn-VIJ" id="HIA-NT-Trf"/>
                         <outlet property="username_textfield_register" destination="qwx-y6-7ac" id="ZSr-Pb-6Tk"/>
-                        <segue destination="wEb-k4-EbG" kind="presentation" identifier="showShoppingListView" id="QUf-I4-GEf"/>
+                        <segue destination="N1n-Zz-Jbf" kind="presentation" identifier="showShoppingListView" id="g04-xE-Ptw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHF-c5-MBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,7 +415,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FoS-tz-zgK"/>
+        <segue reference="cEn-ru-6tA"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.1432906856" blue="0.2973607513" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
