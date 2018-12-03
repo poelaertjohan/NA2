@@ -303,7 +303,6 @@
         <!--Item-->
         <scene sceneID="vOJ-BW-w0Q">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z9B-xA-qrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="MNk-n0-mKE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Jne-Vf-vma"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZFW-ez-l1z">
@@ -314,6 +313,7 @@
                         <segue destination="wEb-k4-EbG" kind="relationship" relationship="rootViewController" id="Inb-0R-REN"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z9B-xA-qrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3067" y="-419"/>
         </scene>
