@@ -17,7 +17,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     let imagePicker = UIImagePickerController()
     var selectedImage = UIImage()
     var isImageSelected: Bool = false
-    let repository = Repository()
+    let repository = Repository.itemRepository
     
     
     @IBAction func loadPictureClicked(_ sender: Any) {

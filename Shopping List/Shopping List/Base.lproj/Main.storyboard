@@ -313,11 +313,10 @@
             </objects>
             <point key="canvasLocation" x="3086" y="335"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar-->
         <scene sceneID="jIN-8H-tHP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rRk-OX-uOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController id="N1n-Zz-Jbf" sceneMemberID="viewController">
+                <tabBarController id="N1n-Zz-Jbf" customClass="TabBar" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WYp-bO-kwj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -328,6 +327,7 @@
                         <segue destination="jqr-pw-CIc" kind="relationship" relationship="viewControllers" id="EIk-dy-YfR"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rRk-OX-uOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1820" y="27"/>
         </scene>

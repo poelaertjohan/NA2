@@ -18,7 +18,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     
     @IBOutlet var shoppingListTableView: UITableView!
     var itemArray = [Item]()
-    let repository = Repository()
+    let repository = Repository.itemRepository
     let userID = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     
@@ -38,16 +38,16 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-    }
+    } 
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return itemArray.count
+        return self.repository.getItemArray().count
     }
     
     override func tableView(_ tableview: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return itemArray.count
+            return self.repository.getItemArray().count
         }
         return 0
     }
@@ -58,7 +58,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ItemTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
         }
-        let item = itemArray[indexPath.row]
+        let item = self.repository.getItemArray()[indexPath.row]
         let urlKey = item.picture
         
         if urlKey != "/" {
@@ -83,11 +83,13 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         
-        if itemArray[indexPath.row].picture != "/" {
-            self.repository.deleteItemFromStorate(folderName: "images/", itemName: itemArray[indexPath.row].pictureName)
+        if repository.getItemArray()[indexPath.row].picture != "/" {
+            self.repository.deleteItemFromStorate(folderName: "images/", itemName: self.repository.getItemArray()[indexPath.row].pictureName)
         }
         
+        itemArray = self.repository.getItemArray()
         itemArray.remove(at: indexPath.row)
+        self.repository.setItemArray(array: itemArray)
         
         tableView.reloadData()
         //tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -98,10 +100,10 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     
     
     override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let selectedItem = self.itemArray[indexPath.row]
+        let selectedItem = self.repository.getItemArray()[indexPath.row]
         
         if selectedItem.pictureName != "/" {
-        if let url = URL(string: itemArray[indexPath.row].picture) {
+        if let url = URL(string: self.repository.getItemArray()[indexPath.row].picture) {
             do {
                 let data = try Data(contentsOf: url)
                 showImageFullScreen(image: UIImage(data: data)!)
@@ -115,9 +117,6 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        let alert = UIAlertController(title: "scherm geladen", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true)
     }
     
     
@@ -163,9 +162,10 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
                         let item = Item(name: name, amount: amount, picture: picture, pictureName: pictureName)
                         
                         arrayOfItems.append(item)
+                        self.repository.addItemToArray(item: item)
                         //print(self.itemArray)
                     }
-                    self.itemArray = arrayOfItems
+                    //self.itemArray = arrayOfItems
                     self.tableView.reloadData()
                 }
             }
