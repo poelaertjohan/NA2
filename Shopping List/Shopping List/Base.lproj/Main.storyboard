@@ -227,10 +227,10 @@
             </objects>
             <point key="canvasLocation" x="4338" y="-419"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Settings Controller-->
         <scene sceneID="hmd-Ls-bo1">
             <objects>
-                <tableViewController id="aYK-3x-gPf" sceneMemberID="viewController">
+                <tableViewController id="aYK-3x-gPf" customClass="SettingsController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="v4K-gn-60M">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,6 +291,10 @@
                             <outlet property="delegate" destination="aYK-3x-gPf" id="aGW-Us-ZxW"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="dateAndTime_datepicker_settings" destination="VuW-Gu-Rou" id="JPr-tp-Ecg"/>
+                        <outlet property="enableNotifications_switch_settings" destination="xZ2-Zi-Xkj" id="cJH-RK-lEb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afl-hg-GXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -26,6 +26,7 @@
 		1BB6234721A3047300EE1E2E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB6234621A3047300EE1E2E /* ItemTableViewCell.swift */; };
 		1BE835C821B2D3350031EE2B /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE835C721B2D3350031EE2B /* RegisterRepository.swift */; };
 		1BE835CA21B5457A0031EE2B /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE835C921B5457A0031EE2B /* Repository.swift */; };
+		1BE835CE21B583E90031EE2B /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE835CD21B583E90031EE2B /* SettingsController.swift */; };
 		1BFCCD8921A731DC00E1099E /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD8821A731DC00E1099E /* ItemRepository.swift */; };
 		1BFCCD8E21A9919800E1099E /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD8D21A9919800E1099E /* BorderButton.swift */; };
 		1BFCCD9121A9948E00E1099E /* FullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD9021A9948E00E1099E /* FullButton.swift */; };
@@ -76,6 +77,7 @@
 		1BB6234621A3047300EE1E2E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		1BE835C721B2D3350031EE2B /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		1BE835C921B5457A0031EE2B /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		1BE835CD21B583E90031EE2B /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		1BFCCD8821A731DC00E1099E /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		1BFCCD8D21A9919800E1099E /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		1BFCCD9021A9948E00E1099E /* FullButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullButton.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				1B62C22B21A030ED00425DD5 /* LoginController.swift */,
 				1B62C23321A0A13300425DD5 /* ShoppingListViewController.swift */,
 				1B0D2CB421A59F2700F3D7B7 /* AddItemController.swift */,
+				1BE835CD21B583E90031EE2B /* SettingsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				1BE835C821B2D3350031EE2B /* RegisterRepository.swift in Sources */,
 				1B62C23421A0A13300425DD5 /* ShoppingListViewController.swift in Sources */,
 				1BFCCD8921A731DC00E1099E /* ItemRepository.swift in Sources */,
+				1BE835CE21B583E90031EE2B /* SettingsController.swift in Sources */,
 				1B62C1F621A025E900425DD5 /* AppDelegate.swift in Sources */,
 				1B62C23921A16F2B00425DD5 /* User.swift in Sources */,
 				1B62C23721A16EE800425DD5 /* Item.swift in Sources */,
