@@ -13,24 +13,37 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     @IBOutlet weak var name_textfield_addItem: UITextField!
     @IBOutlet weak var amount_textfield_addItem: UITextField!
-    @IBOutlet weak var picture_button_addItem: UIButton!
-    @IBOutlet weak var picture_imageview_addItem: UIImageView!
+    @IBOutlet weak var picture_button_addItem: BorderButton!
     let imagePicker = UIImagePickerController()
-
-    
-    override func viewDidLoad() {
-        
-    }
+    var selectedImage = UIImage()
+    var isImageSelected: Bool = false
+    let repository = Repository.itemRepository
     
     
     @IBAction func loadPictureClicked(_ sender: Any) {
         openPhotoLibrary()
-        
     }
     
-    @IBAction func addItemClicked(_ sender: Any) {
-        uploadImage()
+   
+    @IBAction func saveClicked(_ sender: Any) {
+        guard let name = name_textfield_addItem.text, !name.isEmpty else {
+            showWarning(message: "Please pick a name")
+            return
+        }
+        
+        guard let amount = name_textfield_addItem.text, !amount.isEmpty else {
+            showWarning(message: "Please insert an amount")
+            return
+        }
+        
+        
+        if isImageSelected {
+            uploadImage(image: self.selectedImage)
+        } else {
+            addItemWithoutImage()
+        }
     }
+    
     
     func openPhotoLibrary() {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
@@ -45,23 +58,35 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            picture_imageview_addItem.contentMode = .scaleAspectFit
-            picture_imageview_addItem.image = pickedImage
-        }
         
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.selectedImage = pickedImage
+            isImageSelected = true
+        }
+ 
         dismiss(animated: true, completion: nil)
     }
     
+    func showWarning(message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion:nil)
+        isImageSelected = false
     }
     
     
-    func uploadImage() {
-        Repository().addItemToDatabase(image: self.picture_imageview_addItem.image!, name: name_textfield_addItem.text!, amount: Int(amount_textfield_addItem.text!)!, isChecked: false)
+    func uploadImage(image: UIImage) {
+        repository.addItemToDatabase(image: image, name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!)
+    }
+    
+    func addItemWithoutImage() {
+        let im: Item = Item(name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!, picture: "/", pictureName: "/")
+        repository.putItemInDatabase(item: im)
     }
     
 }

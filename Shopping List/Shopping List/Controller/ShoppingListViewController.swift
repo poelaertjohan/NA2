@@ -14,11 +14,11 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
 
-class ShoppingListViewController: UITableViewController {
+class ShoppingListViewController: UITableViewController, UITabBarControllerDelegate {
     
     @IBOutlet var shoppingListTableView: UITableView!
     var itemArray = [Item]()
-    let repository = Repository()
+    let repository = Repository.itemRepository
     let userID = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     
@@ -38,16 +38,16 @@ class ShoppingListViewController: UITableViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-    }
+    } 
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return itemArray.count
+        return self.repository.getItemArray().count
     }
     
     override func tableView(_ tableview: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return itemArray.count
+            return self.repository.getItemArray().count
         }
         return 0
     }
@@ -58,17 +58,20 @@ class ShoppingListViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ItemTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
         }
-        let item = itemArray[indexPath.row]
+        let item = self.repository.getItemArray()[indexPath.row]
         let urlKey = item.picture
         
-        if let url = URL(string: urlKey) {
-            do {
-                let data = try Data(contentsOf: url)
-                cell.pictureImageView.image = UIImage(data: data)
-            } catch let err {
-                print(err)
+        if urlKey != "/" {
+            if let url = URL(string: urlKey) {
+                do {
+                    let data = try Data(contentsOf: url)
+                    cell.pictureImageView.image = UIImage(data: data)
+                } catch let err {
+                    print(err)
+                }
             }
         }
+        
         
         cell.nameLabel.text = item.name
         cell.amountLabel.text = "Amount: " + String(item.amount)
@@ -80,17 +83,61 @@ class ShoppingListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         
+        if repository.getItemArray()[indexPath.row].picture != "/" {
+            self.repository.deleteItemFromStorate(folderName: "images/", itemName: self.repository.getItemArray()[indexPath.row].pictureName)
+        }
         
+        itemArray = self.repository.getItemArray()
         itemArray.remove(at: indexPath.row)
+        self.repository.setItemArray(array: itemArray)
         
         tableView.reloadData()
         //tableView.deleteRows(at: [indexPath], with: .automatic)
         
         self.repository.updateItemsInDatabase(itemArray: self.itemArray)
+        
     }
     
     
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let selectedItem = self.repository.getItemArray()[indexPath.row]
+        
+        if selectedItem.pictureName != "/" {
+        if let url = URL(string: self.repository.getItemArray()[indexPath.row].picture) {
+            do {
+                let data = try Data(contentsOf: url)
+                showImageFullScreen(image: UIImage(data: data)!)
+            } catch let err {
+                print(err)
+            }
+        }
+        }
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    
+    func showImageFullScreen(image:UIImage){
+        let fullscreenImage = UIImageView(image: image)
+        fullscreenImage.contentMode = .scaleAspectFit
+        fullscreenImage.backgroundColor = .black
+        fullscreenImage.frame = UIScreen.main.bounds
+        fullscreenImage.isUserInteractionEnabled = true
+        let tapCell = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage(_:)))
+        fullscreenImage.addGestureRecognizer(tapCell)
+        self.view.addSubview(fullscreenImage)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
     
     
     
@@ -108,16 +155,17 @@ class ShoppingListViewController: UITableViewController {
                     for val in items {
                         let itemArr = val.components(separatedBy: ";")
                         let name: String = itemArr[0]
-                        let amount: Int? = Int(itemArr[1])
+                        let amount: String = itemArr[1]
                         let picture: String = itemArr[2]
-                        let isChecked: Bool? = (itemArr[3] == "true")
+                        let pictureName: String = itemArr[3]
                         
-                        let item = Item(name: name, amount: amount!, picture: picture, isChecked: isChecked!)
+                        let item = Item(name: name, amount: amount, picture: picture, pictureName: pictureName)
                         
                         arrayOfItems.append(item)
+                        self.repository.addItemToArray(item: item)
                         //print(self.itemArray)
                     }
-                    self.itemArray = arrayOfItems
+                    //self.itemArray = arrayOfItems
                     self.tableView.reloadData()
                 }
             }
