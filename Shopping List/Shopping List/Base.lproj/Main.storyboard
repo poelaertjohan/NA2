@@ -167,6 +167,7 @@
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="0qT-E8-RQ3"/>
+                                <barButtonItem title="Settings" id="29h-zH-Jl3"/>
                             </items>
                         </toolbar>
                         <prototypes>
@@ -210,16 +211,63 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="hoI-HJ-5Ln"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="A99-Ye-WhF"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="shoppingListTableView" destination="hdf-bS-gjM" id="Nx2-Rb-ixL"/>
                         <segue destination="F5e-a8-dNP" kind="show" identifier="logoutAndShowHome" id="JrJ-Se-a8a"/>
+                        <segue destination="aYK-3x-gPf" kind="show" id="FRq-Ag-uPL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8h-bP-9VK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3086" y="-487"/>
+            <point key="canvasLocation" x="4338" y="-419"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="hmd-Ls-bo1">
+            <objects>
+                <tableViewController id="aYK-3x-gPf" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="v4K-gn-60M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9v4-fa-rzC">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9v4-fa-rzC" id="oeT-0M-Wcd">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aYK-3x-gPf" id="sef-JS-Ceh"/>
+                            <outlet property="delegate" destination="aYK-3x-gPf" id="aGW-Us-ZxW"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Afl-hg-GXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5609" y="-419"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="vOJ-BW-w0Q">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z9B-xA-qrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="MNk-n0-mKE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Jne-Vf-vma"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZFW-ez-l1z">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wEb-k4-EbG" kind="relationship" relationship="rootViewController" id="Inb-0R-REN"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="3067" y="-419"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="2Tr-w3-Aia">
@@ -249,21 +297,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4m-8g-pZF" customClass="FullButton" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="36" y="643.33333333333337" width="342" height="39"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="2Xr-u4-bs0"/>
-                                    <constraint firstAttribute="height" constant="39" id="hPI-RF-Qxx"/>
-                                </constraints>
-                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add Item">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="addItemClicked:" destination="jqr-pw-CIc" eventType="touchUpInside" id="q4v-aC-sLP"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiU-cq-Uef" customClass="BorderButton" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="36" y="448.33333333333331" width="342" height="39"/>
                                 <constraints>
@@ -282,6 +315,19 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items/>
                             </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ak6-Pu-awh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="is9-tY-TD3"/>
+                                    <barButtonItem title="Save" id="TsT-hF-kH1">
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="saveClicked:" destination="jqr-pw-CIc" id="q5W-gL-gcg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -289,13 +335,10 @@
                             <constraint firstItem="HiU-cq-Uef" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" constant="36" id="6UI-9P-Qkm"/>
                             <constraint firstItem="Xoe-P2-bFY" firstAttribute="trailing" secondItem="0cj-WV-Udy" secondAttribute="trailing" constant="36" id="9eO-a6-wzr"/>
                             <constraint firstItem="Xoe-P2-bFY" firstAttribute="trailing" secondItem="HiU-cq-Uef" secondAttribute="trailing" constant="36" id="EMy-gw-zf9"/>
-                            <constraint firstItem="Xoe-P2-bFY" firstAttribute="trailing" secondItem="z4m-8g-pZF" secondAttribute="trailing" constant="36" id="Mwu-Ec-yJM"/>
                             <constraint firstItem="Xoe-P2-bFY" firstAttribute="trailing" secondItem="9yl-6n-oar" secondAttribute="trailing" constant="36" id="ZJI-tU-ZS4"/>
                             <constraint firstItem="0cj-WV-Udy" firstAttribute="top" secondItem="9yl-6n-oar" secondAttribute="bottom" constant="8" id="j0L-c6-MAD"/>
                             <constraint firstItem="9yl-6n-oar" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" constant="36" id="myr-On-z30"/>
                             <constraint firstItem="9yl-6n-oar" firstAttribute="top" secondItem="Xoe-P2-bFY" secondAttribute="top" constant="275.32999999999998" id="nuu-2t-zu8"/>
-                            <constraint firstItem="z4m-8g-pZF" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" constant="36" id="p3z-mS-4Mk"/>
-                            <constraint firstItem="z4m-8g-pZF" firstAttribute="top" secondItem="HiU-cq-Uef" secondAttribute="bottom" constant="156" id="rIL-h8-z5z"/>
                             <constraint firstItem="HiU-cq-Uef" firstAttribute="top" secondItem="0cj-WV-Udy" secondAttribute="bottom" constant="17" id="t5A-co-Gev"/>
                             <constraint firstItem="0cj-WV-Udy" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" constant="36" id="zBh-7I-muJ"/>
                         </constraints>
@@ -323,8 +366,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="wEb-k4-EbG" kind="relationship" relationship="viewControllers" id="Qkn-25-uJY"/>
                         <segue destination="jqr-pw-CIc" kind="relationship" relationship="viewControllers" id="EIk-dy-YfR"/>
+                        <segue destination="MNk-n0-mKE" kind="relationship" relationship="viewControllers" id="QxO-hV-boK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRk-OX-uOv" userLabel="First Responder" sceneMemberID="firstResponder"/>

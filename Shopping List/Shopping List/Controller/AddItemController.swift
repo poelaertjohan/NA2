@@ -13,7 +13,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     @IBOutlet weak var name_textfield_addItem: UITextField!
     @IBOutlet weak var amount_textfield_addItem: UITextField!
-    @IBOutlet weak var picture_button_addItem: UIButton!
+    @IBOutlet weak var picture_button_addItem: BorderButton!
     let imagePicker = UIImagePickerController()
     var selectedImage = UIImage()
     var isImageSelected: Bool = false
@@ -24,8 +24,8 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
         openPhotoLibrary()
     }
     
-    @IBAction func addItemClicked(_ sender: Any) {
-        
+   
+    @IBAction func saveClicked(_ sender: Any) {
         guard let name = name_textfield_addItem.text, !name.isEmpty else {
             showWarning(message: "Please pick a name")
             return
@@ -43,6 +43,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
             addItemWithoutImage()
         }
     }
+    
     
     func openPhotoLibrary() {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
