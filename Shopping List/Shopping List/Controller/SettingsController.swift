@@ -18,18 +18,20 @@ class SettingsController: UITableViewController {
 
     @IBOutlet weak var enableNotifications_switch_settings: UISwitch!
     @IBOutlet weak var dateAndTime_datepicker_settings: UIDatePicker!
-    
+    let userDefaults = UserDefaults.standard
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.enableNotifications_switch_settings.setOn(userDefaults.bool(forKey: "showNotifications"), animated: false)
+        self.dateAndTime_datepicker_settings.isEnabled = self.enableNotifications_switch_settings.isOn
     }
     
     
     
-    //STILL HAVE TO ASK FOR PERMISSIONS TO SHOW NOTIFICATIONS
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        userDefaults.set(self.enableNotifications_switch_settings.isOn, forKey: "showNotifications")
         
         if self.enableNotifications_switch_settings.isOn {
             let calendar = Calendar.current
@@ -57,6 +59,20 @@ class SettingsController: UITableViewController {
                     print("success")
                 }
             })
+        } else {
+            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        }
+    }
+    
+    @IBAction func enableNotificationsChecked(_ sender: Any) {
+        enableDisableDatePicker()
+    }
+    
+    func enableDisableDatePicker() {
+        if self.enableNotifications_switch_settings.isOn {
+            self.dateAndTime_datepicker_settings.isEnabled = true
+        } else {
+            self.dateAndTime_datepicker_settings.isEnabled = false
         }
     }
     
