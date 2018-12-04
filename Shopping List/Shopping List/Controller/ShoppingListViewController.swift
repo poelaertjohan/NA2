@@ -35,6 +35,9 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         do {
             try firebaseAuth.signOut()
             self.performSegue(withIdentifier: "logoutAndShowHome", sender: self)
+            
+            //clear list so a user doesn't get another user his items
+            self.repository.clearItemArray()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
@@ -65,7 +68,8 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
             if let url = URL(string: urlKey) {
                 do {
                     let data = try Data(contentsOf: url)
-                    cell.pictureImageView.image = UIImage(data: data)
+                    //cell.pictureImageView.image = UIImage(data: data)
+                    cell.pictureImageView.image = UIImage(named: "cookies.jpg")
                 } catch let err {
                     print(err)
                 }
