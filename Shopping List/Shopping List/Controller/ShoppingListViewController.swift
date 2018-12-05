@@ -68,8 +68,10 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
             if let url = URL(string: urlKey) {
                 do {
                     let data = try Data(contentsOf: url)
-                    //cell.pictureImageView.image = UIImage(data: data)
-                    cell.pictureImageView.image = UIImage(named: "cookies.jpg")
+                    cell.pictureImageView.image = UIImage(data: data)
+                    
+                    //Use this for testing so you don't reach firebase quota
+                    //cell.pictureImageView.image = UIImage(named: "cookies")
                 } catch let err {
                     print(err)
                 }
@@ -167,9 +169,9 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
                         
                         arrayOfItems.append(item)
                         self.repository.addItemToArray(item: item)
-                        //print(self.itemArray)
+                        
                     }
-                    //self.itemArray = arrayOfItems
+                    
                     self.tableView.reloadData()
                 }
             }

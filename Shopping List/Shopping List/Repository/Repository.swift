@@ -12,7 +12,6 @@ import Foundation
 class Repository {
 
     static let itemRepository = ItemRepository()
-    static let registerRepository = RegisterRepository()
     
     
     private init() {}
