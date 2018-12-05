@@ -28,6 +28,10 @@ class ItemRepository {
         self.itemArray = array
     }
     
+    func clearItemArray() {
+        self.itemArray = [Item]()
+    }
+    
     //returns link to image
     func addItemToDatabase(image: UIImage, name: String, amount: String) -> String {
         let storage = Storage.storage()

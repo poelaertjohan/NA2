@@ -35,6 +35,9 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         do {
             try firebaseAuth.signOut()
             self.performSegue(withIdentifier: "logoutAndShowHome", sender: self)
+            
+            //clear list so a user doesn't get another user his items
+            self.repository.clearItemArray()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
@@ -66,6 +69,9 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
                 do {
                     let data = try Data(contentsOf: url)
                     cell.pictureImageView.image = UIImage(data: data)
+                    
+                    //Use this for testing so you don't reach firebase quota
+                    //cell.pictureImageView.image = UIImage(named: "cookies")
                 } catch let err {
                     print(err)
                 }
@@ -163,9 +169,9 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
                         
                         arrayOfItems.append(item)
                         self.repository.addItemToArray(item: item)
-                        //print(self.itemArray)
+                        
                     }
-                    //self.itemArray = arrayOfItems
+                    
                     self.tableView.reloadData()
                 }
             }
