@@ -343,14 +343,14 @@
                                     <action selector="loadPictureClicked:" destination="jqr-pw-CIc" eventType="touchUpInside" id="us7-OT-TmC"/>
                                 </connections>
                             </button>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJz-5n-lsK">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9yl-6n-oar">
+                                <rect key="frame" x="25" y="376" width="364" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ak6-Pu-awh">
                                 <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items/>
-                            </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ak6-Pu-awh">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="is9-tY-TD3"/>
                                     <barButtonItem title="Save" id="TsT-hF-kH1">
@@ -361,12 +361,6 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9yl-6n-oar">
-                                <rect key="frame" x="25" y="376" width="364" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -378,8 +372,11 @@
                             <constraint firstItem="HiU-cq-Uef" firstAttribute="centerX" secondItem="jmR-5w-cRp" secondAttribute="centerX" id="OCF-Z7-RC4"/>
                             <constraint firstItem="Xoe-P2-bFY" firstAttribute="trailing" secondItem="0cj-WV-Udy" secondAttribute="trailing" constant="25" id="S7t-rG-SJx"/>
                             <constraint firstItem="Xoe-P2-bFY" firstAttribute="trailing" secondItem="9yl-6n-oar" secondAttribute="trailing" constant="25" id="YbZ-Yg-ycz"/>
+                            <constraint firstItem="ak6-Pu-awh" firstAttribute="top" secondItem="Xoe-P2-bFY" secondAttribute="top" id="baG-nV-Fa1"/>
                             <constraint firstItem="9yl-6n-oar" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" constant="25" id="dCZ-Uu-j3s"/>
+                            <constraint firstItem="ak6-Pu-awh" firstAttribute="trailing" secondItem="Xoe-P2-bFY" secondAttribute="trailing" id="gYY-sZ-GxV"/>
                             <constraint firstItem="Xoe-P2-bFY" firstAttribute="trailing" secondItem="HiU-cq-Uef" secondAttribute="trailing" constant="25" id="kay-Z5-fQE"/>
+                            <constraint firstItem="ak6-Pu-awh" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" id="kcK-1D-Tzh"/>
                             <constraint firstItem="HiU-cq-Uef" firstAttribute="centerY" secondItem="jmR-5w-cRp" secondAttribute="centerY" constant="19.829999999999998" id="l0j-uZ-yNc"/>
                             <constraint firstItem="0cj-WV-Udy" firstAttribute="centerY" secondItem="jmR-5w-cRp" secondAttribute="centerY" constant="-19" id="s3c-3x-Iac"/>
                             <constraint firstItem="0cj-WV-Udy" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" constant="25" id="xDv-bJ-rlv"/>
@@ -396,7 +393,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzz-y6-eZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3086" y="335"/>
+            <point key="canvasLocation" x="3085.507246376812" y="334.82142857142856"/>
         </scene>
         <!--Tab Bar-->
         <scene sceneID="jIN-8H-tHP">
