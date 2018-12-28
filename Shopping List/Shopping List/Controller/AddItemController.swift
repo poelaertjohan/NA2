@@ -41,8 +41,11 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
             uploadImage(image: self.selectedImage)
         } else {
             addItemWithoutImage()
-            
         }
+        
+        name_textfield_addItem.text = ""
+        amount_textfield_addItem.text = ""
+        selectedImage = UIImage()
     }
     
     
