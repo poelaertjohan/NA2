@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
+import FirebaseStorage
 
 class ItemRepository {
     var itemArray = [Item]()
@@ -33,7 +34,7 @@ class ItemRepository {
     }
     
     //returns link to image
-    func addItemToDatabase(image: UIImage, name: String, amount: String) -> String {
+    func addItemAndImageToDatabase(image: UIImage, name: String, amount: String) -> String {
         let storage = Storage.storage()
         let storageReference = storage.reference()
         let imageName = NSUUID().uuidString
@@ -55,8 +56,7 @@ class ItemRepository {
                             
                             
                             let newItem = Item(name: name, amount: amount, picture: imageLink, pictureName: imageName)
-                            //add user here
-                            self.addItemToArray(item: newItem)
+                            
                             self.putItemInDatabase(item: newItem)
                         }
                     }
@@ -77,6 +77,7 @@ class ItemRepository {
         ref.updateData([
             "items": FieldValue.arrayUnion([itemString])
             ])
+        self.addItemToArray(item: item)
         
     }
     

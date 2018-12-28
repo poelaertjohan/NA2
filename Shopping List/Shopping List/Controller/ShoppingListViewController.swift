@@ -122,6 +122,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        var t = self.repository.getItemArray()
         tableView.reloadData()
     }
     

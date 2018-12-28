@@ -26,21 +26,22 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
    
     @IBAction func saveClicked(_ sender: Any) {
+
         guard let name = name_textfield_addItem.text, !name.isEmpty else {
-            showWarning(message: "Please pick a name")
+            showWarning(message: "Please pick a valid name")
             return
         }
         
         guard let amount = name_textfield_addItem.text, !amount.isEmpty else {
-            showWarning(message: "Please insert an amount")
+            showWarning(message: "Please insert a valid amount")
             return
         }
-        
         
         if isImageSelected {
             uploadImage(image: self.selectedImage)
         } else {
             addItemWithoutImage()
+            
         }
     }
     
@@ -81,7 +82,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     
     func uploadImage(image: UIImage) {
-        repository.addItemToDatabase(image: image, name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!)
+        repository.addItemAndImageToDatabase(image: image, name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!)
     }
     
     func addItemWithoutImage() {
