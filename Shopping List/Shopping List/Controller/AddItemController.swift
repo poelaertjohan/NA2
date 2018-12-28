@@ -61,6 +61,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
         present(imagePicker, animated: true)
     }
     
+    //SOURCE: source weet ik niet meer maak ik heb op het internet gevonden dat deze methode nodig is.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -85,7 +86,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     
     func uploadImage(image: UIImage) {
-        repository.addItemAndImageToDatabase(image: image, name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!)
+        repository.addItemAndImage(image: image, name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!)
     }
     
     func addItemWithoutImage() {

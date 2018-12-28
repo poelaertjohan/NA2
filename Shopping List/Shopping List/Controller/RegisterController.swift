@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
-
+import FirebaseAuth
 
 class RegisterController: UIViewController {
     
@@ -72,6 +72,7 @@ class RegisterController: UIViewController {
         let email: String! = self.username_textfield_register.text
         let password: String! = self.password_textfield_register.text
         
+        //SOURCE: https://firebase.google.com/docs/auth/ios/password-auth
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
             if error == nil && user != nil {
                 print("User created!")
@@ -92,7 +93,7 @@ class RegisterController: UIViewController {
         let items = [String]()
         let name = userID
 
-        
+        //SOURCE: https://firebase.google.com/docs/firestore/manage-data/add-data
         db.collection("users").document(userID).setData([
             "items": items,
             "name": name
@@ -104,7 +105,5 @@ class RegisterController: UIViewController {
             }
         }
     }
-    
-    
 }
 

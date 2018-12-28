@@ -34,7 +34,7 @@ class ItemRepository {
     }
     
     //returns link to image
-    func addItemAndImageToDatabase(image: UIImage, name: String, amount: String) -> String {
+    func addItemAndImage(image: UIImage, name: String, amount: String) -> String {
         let storage = Storage.storage()
         let storageReference = storage.reference()
         let imageName = NSUUID().uuidString
@@ -66,7 +66,7 @@ class ItemRepository {
         return imageLink
     }
     
-    
+    //SOURCE: https://firebase.google.com/docs/firestore/manage-data/add-data
     func putItemInDatabase(item: Item) {
         
         let userID = Auth.auth().currentUser!.uid
@@ -94,7 +94,8 @@ class ItemRepository {
             ])
     }
     
-    func deleteItemFromStorate(folderName: String, itemName: String) {
+    //SOURCE: https://firebase.google.com/docs/firestore/manage-data/delete-data
+    func deleteItemFromStorage(folderName: String, itemName: String) {
         Storage.storage().reference().child(folderName + itemName).delete { (error) in
             if let error = error {
                 print("can't delete item from storage")

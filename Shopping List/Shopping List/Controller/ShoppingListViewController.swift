@@ -30,6 +30,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     
     
     
+    //SOURCE: https://firebase.google.com/docs/auth/ios/custom-auth
     @IBAction func logoutPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
@@ -90,7 +91,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         guard editingStyle == .delete else { return }
         
         if repository.getItemArray()[indexPath.row].picture != "/" {
-            self.repository.deleteItemFromStorate(folderName: "images/", itemName: self.repository.getItemArray()[indexPath.row].pictureName)
+            self.repository.deleteItemFromStorage(folderName: "images/", itemName: self.repository.getItemArray()[indexPath.row].pictureName)
         }
         
         itemArray = self.repository.getItemArray()
@@ -124,6 +125,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         super.viewWillAppear(animated)
         var t = self.repository.getItemArray()
         
+        //this way reloadData works faster
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -136,21 +138,22 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         fullscreenImage.backgroundColor = .black
         fullscreenImage.frame = UIScreen.main.bounds
         fullscreenImage.isUserInteractionEnabled = true
-        let tapCell = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage(_:)))
+        let tapCell = UITapGestureRecognizer(target: self, action: #selector(self.hideFullscreenImage(_:)))
         fullscreenImage.addGestureRecognizer(tapCell)
         self.view.addSubview(fullscreenImage)
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+    @objc func hideFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
     }
     
     
-    
+    //Data ophalen heb ik van onderstaande source, vanaf regel 164 heb ik zelf geschreven
+    //SOURCE: https://firebase.google.com/docs/firestore/query-data/get-data
     func getItems() {
         db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
             if error != nil {
@@ -159,7 +162,6 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
                 for document in (snapshot?.documents)! {
                     
                     let items = document.get("items") as! [String]
-                    
                     
                     var arrayOfItems = [Item]()
                     for val in items {

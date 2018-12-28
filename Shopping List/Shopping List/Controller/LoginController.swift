@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class LoginController: UIViewController {
     @IBOutlet weak var email_textfield_login: UITextField!
@@ -37,6 +38,7 @@ class LoginController: UIViewController {
     
     
     func login(email: String, password: String) {
+        //SOURCE: https://firebase.google.com/docs/auth/ios/password-auth
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
                 print("User logged in!")

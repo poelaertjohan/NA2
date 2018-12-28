@@ -39,23 +39,21 @@ class SettingsController: UITableViewController {
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: datePicked, repeats: true)
             
-            let content = UNMutableNotificationContent()
-            content.title = "Shopping List"
-            content.subtitle = "Reminder"
-            content.body = "This is your reminder to go shopping!"
+            let notification = UNMutableNotificationContent()
+            notification.title = "Shopping List"
+            notification.subtitle = "Reminder"
+            notification.body = "This is your reminder to go shopping!"
             
             let request = UNNotificationRequest(
                 identifier: "identifier",
-                content: content,
+                content: notification,
                 trigger: trigger
             )
             
             UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
                 if error != nil {
-                    print("error")
-                    print("error")
+                    print(error)
                 } else {
-                    print("success")
                     print("success")
                 }
             })
