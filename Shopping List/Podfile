@@ -12,6 +12,7 @@ target 'Shopping List' do
   pod 'FirebaseDatabase'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
+  pod 'Kingfisher'
 
   target 'Shopping ListTests' do
     inherit! :search_paths

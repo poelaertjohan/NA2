@@ -13,6 +13,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
+import Kingfisher
+
 
 class ShoppingListViewController: UITableViewController, UITabBarControllerDelegate {
     
@@ -66,17 +68,22 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         let urlKey = item.picture
         
         if urlKey != "/" {
+            let url = URL(string: urlKey)
+            cell.pictureImageView.kf.setImage(with: url)
+            //cell.pictureImageView.image = UIImage(named: "cookies")
+
+            /*
             if let url = URL(string: urlKey) {
                 do {
                     let data = try Data(contentsOf: url)
                     cell.pictureImageView.image = UIImage(data: data)
                     
                     //Use this for testing so you don't reach firebase quota
-                    //cell.pictureImageView.image = UIImage(named: "cookies")
                 } catch let err {
                     print(err)
                 }
             }
+ */
         }
         
         
@@ -130,6 +137,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
             self.tableView.reloadData()
         }
     }
+    
     
     
     func showImageFullScreen(image:UIImage){
