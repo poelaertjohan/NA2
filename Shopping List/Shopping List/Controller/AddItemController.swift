@@ -14,20 +14,21 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var name_textfield_addItem: UITextField!
     @IBOutlet weak var amount_textfield_addItem: UITextField!
     @IBOutlet weak var picture_button_addItem: BorderButton!
+    @IBOutlet weak var indicator_activityIndicator_addItem: UIActivityIndicatorView!
     @IBOutlet weak var image_imageview_addItem: UIImageView!
     let imagePicker = UIImagePickerController()
     var selectedImage = UIImage()
     var isImageSelected: Bool = false
-    let repository = Repository.itemRepository
+    let itemRepository = Repository.itemRepository
     
     
     @IBAction func loadPictureClicked(_ sender: Any) {
         openPhotoLibrary()
     }
     
-   
+    
     @IBAction func saveClicked(_ sender: Any) {
-
+        
         guard let name = name_textfield_addItem.text, !name.isEmpty else {
             showWarning(message: "Please pick a valid name")
             return
@@ -44,11 +45,20 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
             addItemWithoutImage()
         }
         
+        
+        startStopActivityIndicator()
         name_textfield_addItem.text = ""
         amount_textfield_addItem.text = ""
+        isImageSelected = false
         selectedImage = UIImage()
+        image_imageview_addItem.image = UIImage()
     }
     
+    override func viewDidLoad() {
+        indicator_activityIndicator_addItem.hidesWhenStopped = true
+        indicator_activityIndicator_addItem.stopAnimating()
+        
+    }
     
     func openPhotoLibrary() {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
@@ -62,6 +72,14 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
         present(imagePicker, animated: true)
     }
     
+    func startStopActivityIndicator() {
+        if indicator_activityIndicator_addItem.isAnimating {
+            indicator_activityIndicator_addItem.stopAnimating()
+        } else {
+            indicator_activityIndicator_addItem.startAnimating()
+        }
+    }
+    
     //SOURCE: source weet ik niet meer maak ik heb op het internet gevonden dat deze methode nodig is.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -70,7 +88,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
             isImageSelected = true
             image_imageview_addItem.image = selectedImage
         }
- 
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -88,12 +106,24 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     
     func uploadImage(image: UIImage) {
-        repository.addItemAndImage(image: image, name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!)
+        let dispatch = itemRepository.addItemAndImage(image: image, name: self.name_textfield_addItem.text!, amount: self.amount_textfield_addItem.text!)
+        
+        dispatch.notify(queue: .main) {
+            self.startStopActivityIndicator()
+        }
+        
     }
     
     func addItemWithoutImage() {
+        
         let im: Item = Item(name: name_textfield_addItem.text!, amount: amount_textfield_addItem.text!, picture: "/", pictureName: "/")
-        repository.putItemInDatabase(item: im)
+        
+        let dispatch = itemRepository.putItemInDatabase(item: im)
+        
+        dispatch.notify(queue: .main) {
+            self.startStopActivityIndicator()
+        }
+        
     }
     
 }

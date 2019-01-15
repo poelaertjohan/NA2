@@ -16,6 +16,7 @@ import FirebaseStorage
 class ItemRepository {
     var itemArray = [Item]()
     let db = Firestore.firestore()
+    let dispatchGroup = DispatchGroup()
     
     func getItemArray() -> [Item] {
         return itemArray
@@ -24,7 +25,7 @@ class ItemRepository {
     func addItemToArray(item: Item) {
         itemArray.append(item)
     }
-
+    
     func setItemArray(array: [Item]) {
         self.itemArray = array
     }
@@ -34,7 +35,9 @@ class ItemRepository {
     }
     
     //returns link to image
-    func addItemAndImage(image: UIImage, name: String, amount: String) -> String {
+    func addItemAndImage(image: UIImage, name: String, amount: String) -> DispatchGroup {
+        dispatchGroup.enter()
+        disableInteraction(true)
         let storage = Storage.storage()
         let storageReference = storage.reference()
         let imageName = NSUUID().uuidString
@@ -45,7 +48,7 @@ class ItemRepository {
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             
-            let upload = imageReference.putData(imageData, metadata: metadata) { (metadata, error) in
+            imageReference.putData(imageData, metadata: metadata) { (metadata, error) in
                 if error == nil {
                     let imageRef = storageReference.child("images/"+imageName)
                     imageRef.downloadURL { (url, error) in
@@ -58,17 +61,18 @@ class ItemRepository {
                             let newItem = Item(name: name, amount: amount, picture: imageLink, pictureName: imageName)
                             
                             self.putItemInDatabase(item: newItem)
+                            self.dispatchGroup.leave()
                         }
                     }
                 }
             }
         }
-        return imageLink
+        return self.dispatchGroup
     }
     
     //SOURCE: https://firebase.google.com/docs/firestore/manage-data/add-data
-    func putItemInDatabase(item: Item) {
-        
+    func putItemInDatabase(item: Item) -> DispatchGroup {
+        dispatchGroup.enter()
         let userID = Auth.auth().currentUser!.uid
         let itemString: String = convertItemToString(item: item)
         
@@ -77,8 +81,10 @@ class ItemRepository {
         ref.updateData([
             "items": FieldValue.arrayUnion([itemString])
             ])
-        self.addItemToArray(item: item)
-        
+        addItemToArray(item: item)
+        disableInteraction(false)
+        dispatchGroup.leave()
+        return dispatchGroup
     }
     
     func updateItemsInDatabase(itemArray: [Item]) {
@@ -108,8 +114,11 @@ class ItemRepository {
     }
     
     
-
-    
-    
-    
+    func disableInteraction(_ disable: Bool) {
+        if disable {
+            UIApplication.shared.beginIgnoringInteractionEvents()
+        } else {
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+    }
 }

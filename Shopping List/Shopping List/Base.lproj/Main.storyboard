@@ -367,6 +367,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="CLP-ds-CpD">
+                                        <rect key="frame" x="197" y="312" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Qf1-SP-d9j" secondAttribute="bottom" constant="156" id="17u-X5-QOE"/>
@@ -380,6 +383,7 @@
                                     <constraint firstItem="9yl-6n-oar" firstAttribute="centerX" secondItem="Miz-BX-fnK" secondAttribute="centerX" constant="-2" id="GTE-UT-Sx6"/>
                                     <constraint firstItem="0cj-WV-Udy" firstAttribute="centerY" secondItem="Miz-BX-fnK" secondAttribute="centerY" constant="-91.5" id="Izk-F4-PeF"/>
                                     <constraint firstAttribute="trailing" secondItem="HiU-cq-Uef" secondAttribute="trailing" constant="27" id="PZU-5l-6wg"/>
+                                    <constraint firstItem="CLP-ds-CpD" firstAttribute="centerX" secondItem="Miz-BX-fnK" secondAttribute="centerX" id="PnN-OO-3fd"/>
                                     <constraint firstItem="Qf1-SP-d9j" firstAttribute="leading" secondItem="Miz-BX-fnK" secondAttribute="leading" constant="23" id="QxH-Jz-b4z"/>
                                     <constraint firstItem="9yl-6n-oar" firstAttribute="leading" secondItem="Miz-BX-fnK" secondAttribute="leading" constant="23" id="VTr-dF-b79"/>
                                     <constraint firstItem="9yl-6n-oar" firstAttribute="centerY" secondItem="Miz-BX-fnK" secondAttribute="centerY" constant="-129.5" id="Wx9-JQ-1yK"/>
@@ -389,6 +393,7 @@
                                     <constraint firstItem="0cj-WV-Udy" firstAttribute="centerX" secondItem="Miz-BX-fnK" secondAttribute="centerX" constant="-2" id="j68-uB-H2Y"/>
                                     <constraint firstItem="Qf1-SP-d9j" firstAttribute="top" secondItem="HiU-cq-Uef" secondAttribute="bottom" constant="14" id="p9a-mU-dTY"/>
                                     <constraint firstItem="0cj-WV-Udy" firstAttribute="centerX" secondItem="Miz-BX-fnK" secondAttribute="centerX" constant="-2" id="u31-mX-edn"/>
+                                    <constraint firstItem="CLP-ds-CpD" firstAttribute="centerY" secondItem="Miz-BX-fnK" secondAttribute="centerY" constant="-18.5" id="xKZ-3t-zJ1"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -410,6 +415,7 @@
                     <connections>
                         <outlet property="amount_textfield_addItem" destination="0cj-WV-Udy" id="1m5-TG-DlK"/>
                         <outlet property="image_imageview_addItem" destination="Qf1-SP-d9j" id="4So-qP-FNi"/>
+                        <outlet property="indicator_activityIndicator_addItem" destination="CLP-ds-CpD" id="bxv-OH-AzC"/>
                         <outlet property="name_textfield_addItem" destination="9yl-6n-oar" id="5oO-fT-0pH"/>
                         <outlet property="picture_button_addItem" destination="HiU-cq-Uef" id="AfB-Ue-6do"/>
                     </connections>

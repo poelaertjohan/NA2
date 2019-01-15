@@ -69,9 +69,9 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         
         if urlKey != "/" {
             let url = URL(string: urlKey)
-            cell.pictureImageView.kf.setImage(with: url)
+            //cell.pictureImageView.kf.setImage(with: url)
             //Use this for testing so you don't reach firebase quota
-            //cell.pictureImageView.image = UIImage(named: "cookies")
+            cell.pictureImageView.image = UIImage(named: "cookies")
 
             /*
             if let url = URL(string: urlKey) {
