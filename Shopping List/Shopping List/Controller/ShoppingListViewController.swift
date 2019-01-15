@@ -70,6 +70,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         if urlKey != "/" {
             let url = URL(string: urlKey)
             cell.pictureImageView.kf.setImage(with: url)
+            //Use this for testing so you don't reach firebase quota
             //cell.pictureImageView.image = UIImage(named: "cookies")
 
             /*
@@ -78,7 +79,6 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
                     let data = try Data(contentsOf: url)
                     cell.pictureImageView.image = UIImage(data: data)
                     
-                    //Use this for testing so you don't reach firebase quota
                 } catch let err {
                     print(err)
                 }
@@ -133,9 +133,9 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         var t = self.repository.getItemArray()
         
         //this way reloadData works faster
-        DispatchQueue.main.async {
+        //DispatchQueue.main.async {
             self.tableView.reloadData()
-        }
+        //}
     }
     
     
@@ -160,7 +160,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     }
     
     
-    //Data ophalen heb ik van onderstaande source, vanaf regel 164 heb ik zelf geschreven
+    //Data ophalen heb ik van onderstaande source
     //SOURCE: https://firebase.google.com/docs/firestore/query-data/get-data
     func getItems() {
         db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
@@ -169,6 +169,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
             } else {
                 for document in (snapshot?.documents)! {
                     
+                    //vanaf deze regel heb ik zelf geschreven
                     let items = document.get("items") as! [String]
                     
                     var arrayOfItems = [Item]()

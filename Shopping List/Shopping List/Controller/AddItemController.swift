@@ -14,6 +14,7 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var name_textfield_addItem: UITextField!
     @IBOutlet weak var amount_textfield_addItem: UITextField!
     @IBOutlet weak var picture_button_addItem: BorderButton!
+    @IBOutlet weak var image_imageview_addItem: UIImageView!
     let imagePicker = UIImagePickerController()
     var selectedImage = UIImage()
     var isImageSelected: Bool = false
@@ -65,8 +66,9 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.selectedImage = pickedImage
+            selectedImage = pickedImage
             isImageSelected = true
+            image_imageview_addItem.image = selectedImage
         }
  
         dismiss(animated: true, completion: nil)
