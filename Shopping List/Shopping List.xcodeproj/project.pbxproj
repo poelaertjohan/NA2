@@ -148,12 +148,12 @@
 				1B62C22A21A02F8100425DD5 /* Controller */,
 				1B62C1F521A025E900425DD5 /* AppDelegate.swift */,
 				1B62C1F921A025E900425DD5 /* Main.storyboard */,
+				1B79D42A21D6B84500E16157 /* ItemTableViewCell.swift */,
 				1B62C1FF21A025EC00425DD5 /* Assets.xcassets */,
 				1B62C20121A025EC00425DD5 /* LaunchScreen.storyboard */,
 				1B62C20421A025EC00425DD5 /* Info.plist */,
 				1B62C1FC21A025E900425DD5 /* Shopping_List.xcdatamodeld */,
 				1B62C22621A02B5000425DD5 /* GoogleService-Info.plist */,
-				1B79D42A21D6B84500E16157 /* ItemTableViewCell.swift */,
 			);
 			path = "Shopping List";
 			sourceTree = "<group>";
