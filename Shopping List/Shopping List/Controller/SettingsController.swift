@@ -25,6 +25,7 @@ class SettingsController: UITableViewController {
         super.viewDidLoad()
         self.enableNotifications_switch_settings.setOn(userDefaults.bool(forKey: "showNotifications"), animated: false)
         self.dateAndTime_datepicker_settings.isEnabled = self.enableNotifications_switch_settings.isOn
+        self.tabBarController!.tabBar.isHidden = true
     }
     
     

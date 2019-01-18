@@ -76,7 +76,12 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         
         
         cell.nameLabel.text = item.name
-        cell.amountLabel.text = "Amount: " + String(item.amount)
+        
+        if item.amount != "" {
+            cell.amountLabel.text = "Amount: " + String(item.amount)
+        } else {
+            cell.amountLabel.text = ""
+        }
         
         return cell
     }
@@ -116,9 +121,12 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController!.tabBar.isHidden = false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tableView.reloadData()
         
     }
