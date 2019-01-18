@@ -392,9 +392,8 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items/>
                             </toolbar>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HJU-H1-2bE">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJU-H1-2bE">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Add Item" id="gUr-lW-GMp">
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="TsT-hF-kH1">
@@ -413,10 +412,13 @@
                             <constraint firstItem="Miz-BX-fnK" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" id="D8L-MK-cKb"/>
                             <constraint firstItem="Miz-BX-fnK" firstAttribute="trailing" secondItem="Xoe-P2-bFY" secondAttribute="trailing" id="KWN-tr-ZkR"/>
                             <constraint firstItem="Miz-BX-fnK" firstAttribute="bottom" secondItem="Xoe-P2-bFY" secondAttribute="bottom" id="ZAw-Jv-Euq"/>
+                            <constraint firstItem="HJU-H1-2bE" firstAttribute="top" secondItem="Xoe-P2-bFY" secondAttribute="top" id="ZYM-0U-54Y"/>
                             <constraint firstItem="ak6-Pu-awh" firstAttribute="top" secondItem="Xoe-P2-bFY" secondAttribute="top" id="baG-nV-Fa1"/>
+                            <constraint firstItem="HJU-H1-2bE" firstAttribute="trailing" secondItem="Xoe-P2-bFY" secondAttribute="trailing" id="cnI-t3-gqO"/>
                             <constraint firstItem="ak6-Pu-awh" firstAttribute="trailing" secondItem="Xoe-P2-bFY" secondAttribute="trailing" id="gYY-sZ-GxV"/>
                             <constraint firstItem="ak6-Pu-awh" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" id="kcK-1D-Tzh"/>
                             <constraint firstItem="Miz-BX-fnK" firstAttribute="top" secondItem="ak6-Pu-awh" secondAttribute="bottom" id="o2a-4c-tXC"/>
+                            <constraint firstItem="HJU-H1-2bE" firstAttribute="leading" secondItem="Xoe-P2-bFY" secondAttribute="leading" id="tzn-4A-OKx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xoe-P2-bFY"/>
                     </view>
