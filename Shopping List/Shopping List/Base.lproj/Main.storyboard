@@ -228,33 +228,30 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9v4-fa-rzC">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9v4-fa-rzC" id="oeT-0M-Wcd">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9v4-fa-rzC" id="oeT-0M-Wcd">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable notifications" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YV-nc-MvK">
-                                                    <rect key="frame" x="36.666666666666657" y="11.666666666666666" width="149.66666666666666" height="20.333333333333336"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="149.66999999999999" id="bsC-jo-afc"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable notifications" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YV-nc-MvK">
+                                                    <rect key="frame" x="37" y="11.666666666666666" width="149.66666666666666" height="20.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZ2-Zi-Xkj">
-                                                    <rect key="frame" x="347" y="6.3333333333333321" width="51" height="30.999999999999996"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZ2-Zi-Xkj">
+                                                    <rect key="frame" x="347" y="6.6666666666666661" width="51" height="30.333333333333336"/>
                                                     <connections>
                                                         <action selector="enableNotificationsChecked:" destination="aYK-3x-gPf" eventType="valueChanged" id="egO-Sf-5QV"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="xZ2-Zi-Xkj" secondAttribute="trailing" constant="18" id="0Hy-NL-E9j"/>
-                                                <constraint firstItem="4YV-nc-MvK" firstAttribute="leading" secondItem="oeT-0M-Wcd" secondAttribute="leadingMargin" constant="16.670000000000002" id="1tn-Xf-fa3"/>
-                                                <constraint firstItem="xZ2-Zi-Xkj" firstAttribute="top" secondItem="oeT-0M-Wcd" secondAttribute="top" constant="6.3300000000000001" id="E2P-Z5-sVN"/>
-                                                <constraint firstItem="4YV-nc-MvK" firstAttribute="centerY" secondItem="oeT-0M-Wcd" secondAttribute="centerY" id="EVt-MO-hxb"/>
-                                                <constraint firstAttribute="bottom" secondItem="xZ2-Zi-Xkj" secondAttribute="bottom" constant="6.3300000000000001" id="Fjy-nM-J6v"/>
-                                                <constraint firstItem="4YV-nc-MvK" firstAttribute="centerX" secondItem="oeT-0M-Wcd" secondAttribute="centerX" constant="-95.5" id="ges-Sa-hc5"/>
+                                                <constraint firstItem="4YV-nc-MvK" firstAttribute="centerY" secondItem="oeT-0M-Wcd" secondAttribute="centerY" id="3gW-YS-lPs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="xZ2-Zi-Xkj" secondAttribute="trailing" constant="-2" id="AUE-gf-nUT"/>
+                                                <constraint firstItem="xZ2-Zi-Xkj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4YV-nc-MvK" secondAttribute="trailing" constant="8" symbolic="YES" id="XGw-ca-eMU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xZ2-Zi-Xkj" secondAttribute="bottom" constant="-4" id="cbc-rB-KJv"/>
+                                                <constraint firstItem="4YV-nc-MvK" firstAttribute="leading" secondItem="oeT-0M-Wcd" secondAttribute="leading" constant="37" id="rQy-nz-tQX"/>
+                                                <constraint firstItem="4YV-nc-MvK" firstAttribute="centerY" secondItem="xZ2-Zi-Xkj" secondAttribute="centerY" id="t8l-80-bVK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -266,7 +263,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="VuW-Gu-Rou">
-                                                    <rect key="frame" x="58" y="46" width="320" height="153"/>
+                                                    <rect key="frame" x="40" y="46" width="334" height="153"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="565542421.96468794">
                                                         <!--2018-12-03 15:07:01 +0000-->
                                                     </date>
@@ -279,15 +276,13 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VuW-Gu-Rou" firstAttribute="top" secondItem="lyI-i6-Ow1" secondAttribute="bottom" constant="10" id="06f-kK-YOO"/>
-                                                <constraint firstItem="VuW-Gu-Rou" firstAttribute="leading" secondItem="ATR-xv-DsH" secondAttribute="leadingMargin" constant="38" id="Hc4-Ls-Ccm"/>
-                                                <constraint firstItem="VuW-Gu-Rou" firstAttribute="top" secondItem="lyI-i6-Ow1" secondAttribute="bottom" constant="10" id="LmL-IA-i2u"/>
+                                                <constraint firstItem="VuW-Gu-Rou" firstAttribute="top" secondItem="lyI-i6-Ow1" secondAttribute="bottom" constant="10" id="FMO-O5-5aZ"/>
+                                                <constraint firstItem="VuW-Gu-Rou" firstAttribute="bottom" secondItem="ATR-xv-DsH" secondAttribute="bottomMargin" id="KK0-zJ-vEp"/>
                                                 <constraint firstItem="lyI-i6-Ow1" firstAttribute="top" secondItem="ATR-xv-DsH" secondAttribute="topMargin" constant="5" id="Mh1-hE-wDb"/>
-                                                <constraint firstAttribute="trailing" secondItem="lyI-i6-Ow1" secondAttribute="trailing" constant="275" id="YJO-eg-279"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="VuW-Gu-Rou" secondAttribute="trailing" constant="16" id="ZqO-ll-F9E"/>
-                                                <constraint firstItem="VuW-Gu-Rou" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lyI-i6-Ow1" secondAttribute="leading" id="uSE-3H-er7"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lyI-i6-Ow1" secondAttribute="trailing" symbolic="YES" id="YJO-eg-279"/>
+                                                <constraint firstItem="VuW-Gu-Rou" firstAttribute="leading" secondItem="ATR-xv-DsH" secondAttribute="leadingMargin" constant="20" id="ama-hj-P35"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VuW-Gu-Rou" secondAttribute="trailing" constant="20" id="wVx-oz-FDj"/>
                                                 <constraint firstItem="lyI-i6-Ow1" firstAttribute="leading" secondItem="ATR-xv-DsH" secondAttribute="leading" constant="38" id="yXu-DV-mQh"/>
-                                                <constraint firstItem="VuW-Gu-Rou" firstAttribute="bottom" secondItem="ATR-xv-DsH" secondAttribute="bottomMargin" id="yo0-tI-Qi6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
