@@ -52,7 +52,7 @@ class SettingsController: UITableViewController {
             
             UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
                 if error != nil {
-                    print(error)
+                    print(error!)
                 } else {
                     print("success")
                 }

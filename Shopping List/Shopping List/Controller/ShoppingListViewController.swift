@@ -57,7 +57,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         }
         return 0
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -69,21 +69,9 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         
         if urlKey != "/" {
             let url = URL(string: urlKey)
-            //cell.pictureImageView.kf.setImage(with: url)
+            cell.pictureImageView.kf.setImage(with: url)
             //Use this for testing so you don't reach firebase quota
-            cell.pictureImageView.image = UIImage(named: "cookies")
-
-            /*
-            if let url = URL(string: urlKey) {
-                do {
-                    let data = try Data(contentsOf: url)
-                    cell.pictureImageView.image = UIImage(data: data)
-                    
-                } catch let err {
-                    print(err)
-                }
-            }
- */
+            //cell.pictureImageView.image = UIImage(named: "cookies")
         }
         
         
@@ -117,25 +105,22 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         let selectedItem = self.repository.getItemArray()[indexPath.row]
         
         if selectedItem.pictureName != "/" {
-        if let url = URL(string: self.repository.getItemArray()[indexPath.row].picture) {
-            do {
-                let data = try Data(contentsOf: url)
-                showImageFullScreen(image: UIImage(data: data)!)
-            } catch let err {
-                print(err)
+            if let url = URL(string: self.repository.getItemArray()[indexPath.row].picture) {
+                do {
+                    let data = try Data(contentsOf: url)
+                    showImageFullScreen(image: UIImage(data: data)!)
+                } catch let err {
+                    print(err)
+                }
             }
-        }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        var t = self.repository.getItemArray()
         
-        //this way reloadData works faster
-        //DispatchQueue.main.async {
-            self.tableView.reloadData()
-        //}
+        self.tableView.reloadData()
+        
     }
     
     
@@ -165,7 +150,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     func getItems() {
         db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
             if error != nil {
-                print(error)
+                print(error!)
             } else {
                 for document in (snapshot?.documents)! {
                     

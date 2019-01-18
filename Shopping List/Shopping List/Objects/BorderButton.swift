@@ -19,6 +19,5 @@ class BorderButton: UIButton {
         
         widthAnchor.constraint(equalToConstant: 200).isActive = true
         heightAnchor.constraint(equalToConstant: 45).isActive = true
-
     }
 }

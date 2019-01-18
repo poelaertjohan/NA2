@@ -104,7 +104,7 @@ class ItemRepository {
     func deleteItemFromStorage(folderName: String, itemName: String) {
         Storage.storage().reference().child(folderName + itemName).delete { (error) in
             if let error = error {
-                print("can't delete item from storage")
+                print(error)
             }
         }
     }
