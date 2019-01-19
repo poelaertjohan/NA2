@@ -111,12 +111,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         
         if selectedItem.pictureName != "/" {
             if let url = URL(string: self.repository.getItemArray()[indexPath.row].picture) {
-                do {
-                    let data = try Data(contentsOf: url)
-                    showImageFullScreen(image: UIImage(data: data)!)
-                } catch let err {
-                    print(err)
-                }
+                showImageFullScreen(url: url)
             }
         }
     }
@@ -133,8 +128,9 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     
     
     
-    func showImageFullScreen(image:UIImage){
-        let fullscreenImage = UIImageView(image: image)
+    func showImageFullScreen(url: URL){
+        let fullscreenImage = UIImageView()
+        fullscreenImage.kf.setImage(with: url)
         fullscreenImage.contentMode = .scaleAspectFit
         fullscreenImage.backgroundColor = .black
         fullscreenImage.frame = UIScreen.main.bounds

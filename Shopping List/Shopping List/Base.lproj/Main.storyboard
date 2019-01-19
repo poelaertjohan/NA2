@@ -200,7 +200,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="29h-zH-Jl3">
                             <connections>
-                                <segue destination="aYK-3x-gPf" kind="push" id="98u-A2-V9w"/>
+                                <segue destination="aYK-3x-gPf" kind="show" id="98u-A2-V9w"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
