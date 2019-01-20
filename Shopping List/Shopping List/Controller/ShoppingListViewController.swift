@@ -127,7 +127,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     }
     
     
-    
+    //Dit heb ik geschreven met hulp van het internet
     func showImageFullScreen(url: URL){
         let fullscreenImage = UIImageView()
         fullscreenImage.kf.setImage(with: url)
