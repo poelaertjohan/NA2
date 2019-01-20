@@ -13,6 +13,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
+import Kingfisher
+
 
 class ShoppingListViewController: UITableViewController, UITabBarControllerDelegate {
     
@@ -30,6 +32,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
     
     
     
+    //SOURCE: https://firebase.google.com/docs/auth/ios/custom-auth
     @IBAction func logoutPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
@@ -54,7 +57,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         }
         return 0
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -65,22 +68,20 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         let urlKey = item.picture
         
         if urlKey != "/" {
-            if let url = URL(string: urlKey) {
-                do {
-                    let data = try Data(contentsOf: url)
-                    cell.pictureImageView.image = UIImage(data: data)
-                    
-                    //Use this for testing so you don't reach firebase quota
-                    //cell.pictureImageView.image = UIImage(named: "cookies")
-                } catch let err {
-                    print(err)
-                }
-            }
+            let url = URL(string: urlKey)
+            cell.pictureImageView.kf.setImage(with: url)
+            //Use this for testing so you don't reach firebase quota
+            //cell.pictureImageView.image = UIImage(named: "cookies")
         }
         
         
         cell.nameLabel.text = item.name
-        cell.amountLabel.text = "Amount: " + String(item.amount)
+        
+        if item.amount != "" {
+            cell.amountLabel.text = "Amount: " + String(item.amount)
+        } else {
+            cell.amountLabel.text = ""
+        }
         
         return cell
     }
@@ -90,7 +91,7 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         guard editingStyle == .delete else { return }
         
         if repository.getItemArray()[indexPath.row].picture != "/" {
-            self.repository.deleteItemFromStorate(folderName: "images/", itemName: self.repository.getItemArray()[indexPath.row].pictureName)
+            self.repository.deleteItemFromStorage(folderName: "images/", itemName: self.repository.getItemArray()[indexPath.row].pictureName)
         }
         
         itemArray = self.repository.getItemArray()
@@ -109,53 +110,56 @@ class ShoppingListViewController: UITableViewController, UITabBarControllerDeleg
         let selectedItem = self.repository.getItemArray()[indexPath.row]
         
         if selectedItem.pictureName != "/" {
-        if let url = URL(string: self.repository.getItemArray()[indexPath.row].picture) {
-            do {
-                let data = try Data(contentsOf: url)
-                showImageFullScreen(image: UIImage(data: data)!)
-            } catch let err {
-                print(err)
+            if let url = URL(string: self.repository.getItemArray()[indexPath.row].picture) {
+                showImageFullScreen(url: url)
             }
         }
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController!.tabBar.isHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        self.tableView.reloadData()
+        
     }
     
     
-    func showImageFullScreen(image:UIImage){
-        let fullscreenImage = UIImageView(image: image)
+    
+    func showImageFullScreen(url: URL){
+        let fullscreenImage = UIImageView()
+        fullscreenImage.kf.setImage(with: url)
         fullscreenImage.contentMode = .scaleAspectFit
         fullscreenImage.backgroundColor = .black
         fullscreenImage.frame = UIScreen.main.bounds
         fullscreenImage.isUserInteractionEnabled = true
-        let tapCell = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage(_:)))
+        let tapCell = UITapGestureRecognizer(target: self, action: #selector(self.hideFullscreenImage(_:)))
         fullscreenImage.addGestureRecognizer(tapCell)
         self.view.addSubview(fullscreenImage)
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+    @objc func hideFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
     }
     
     
-    
+    //Data ophalen heb ik van onderstaande source
+    //SOURCE: https://firebase.google.com/docs/firestore/query-data/get-data
     func getItems() {
         db.collection("users").whereField("name", isEqualTo: userID).getDocuments { (snapshot, error) in
             if error != nil {
-                print(error)
+                print(error!)
             } else {
                 for document in (snapshot?.documents)! {
                     
+                    //vanaf deze regel heb ik zelf geschreven
                     let items = document.get("items") as! [String]
-                    
                     
                     var arrayOfItems = [Item]()
                     for val in items {

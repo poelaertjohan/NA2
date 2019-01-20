@@ -23,9 +23,9 @@
 		1B62C23421A0A13300425DD5 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C23321A0A13300425DD5 /* ShoppingListViewController.swift */; };
 		1B62C23721A16EE800425DD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C23621A16EE800425DD5 /* Item.swift */; };
 		1B62C23921A16F2B00425DD5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62C23821A16F2B00425DD5 /* User.swift */; };
+		1B79D42B21D6B84500E16157 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79D42A21D6B84500E16157 /* ItemTableViewCell.swift */; };
 		1BE835CA21B5457A0031EE2B /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE835C921B5457A0031EE2B /* Repository.swift */; };
 		1BE835CE21B583E90031EE2B /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE835CD21B583E90031EE2B /* SettingsController.swift */; };
-		1BE835D021B6F91B0031EE2B /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE835CF21B6F91B0031EE2B /* ItemTableViewCell.swift */; };
 		1BFCCD8921A731DC00E1099E /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD8821A731DC00E1099E /* ItemRepository.swift */; };
 		1BFCCD8E21A9919800E1099E /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD8D21A9919800E1099E /* BorderButton.swift */; };
 		1BFCCD9121A9948E00E1099E /* FullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCCD9021A9948E00E1099E /* FullButton.swift */; };
@@ -73,9 +73,9 @@
 		1B62C23321A0A13300425DD5 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		1B62C23621A16EE800425DD5 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1B62C23821A16F2B00425DD5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1B79D42A21D6B84500E16157 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		1BE835C921B5457A0031EE2B /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		1BE835CD21B583E90031EE2B /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		1BE835CF21B6F91B0031EE2B /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableViewCell.swift; path = ../../../../../../.Trash/ItemTableViewCell.swift; sourceTree = "<group>"; };
 		1BFCCD8821A731DC00E1099E /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		1BFCCD8D21A9919800E1099E /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		1BFCCD9021A9948E00E1099E /* FullButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullButton.swift; sourceTree = "<group>"; };
@@ -148,10 +148,10 @@
 				1B62C22A21A02F8100425DD5 /* Controller */,
 				1B62C1F521A025E900425DD5 /* AppDelegate.swift */,
 				1B62C1F921A025E900425DD5 /* Main.storyboard */,
+				1B79D42A21D6B84500E16157 /* ItemTableViewCell.swift */,
 				1B62C1FF21A025EC00425DD5 /* Assets.xcassets */,
 				1B62C20121A025EC00425DD5 /* LaunchScreen.storyboard */,
 				1B62C20421A025EC00425DD5 /* Info.plist */,
-				1BE835CF21B6F91B0031EE2B /* ItemTableViewCell.swift */,
 				1B62C1FC21A025E900425DD5 /* Shopping_List.xcdatamodeld */,
 				1B62C22621A02B5000425DD5 /* GoogleService-Info.plist */,
 			);
@@ -449,6 +449,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -465,6 +466,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -490,10 +492,10 @@
 				1B62C22921A02F7000425DD5 /* RegisterController.swift in Sources */,
 				1BE835CA21B5457A0031EE2B /* Repository.swift in Sources */,
 				1B62C1F821A025E900425DD5 /* ViewController.swift in Sources */,
-				1BE835D021B6F91B0031EE2B /* ItemTableViewCell.swift in Sources */,
 				1B62C23421A0A13300425DD5 /* ShoppingListViewController.swift in Sources */,
 				1BFCCD8921A731DC00E1099E /* ItemRepository.swift in Sources */,
 				1BE835CE21B583E90031EE2B /* SettingsController.swift in Sources */,
+				1B79D42B21D6B84500E16157 /* ItemTableViewCell.swift in Sources */,
 				1B62C1F621A025E900425DD5 /* AppDelegate.swift in Sources */,
 				1B62C23921A16F2B00425DD5 /* User.swift in Sources */,
 				1B62C23721A16EE800425DD5 /* Item.swift in Sources */,

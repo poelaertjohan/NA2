@@ -18,5 +18,6 @@ class FullButton: UIButton {
         
         widthAnchor.constraint(equalToConstant: 200).isActive = true
         heightAnchor.constraint(equalToConstant: 40).isActive = true
+        layer.cornerRadius = 4
     }
 }
